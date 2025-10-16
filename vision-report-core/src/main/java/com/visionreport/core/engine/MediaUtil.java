@@ -2,7 +2,7 @@ package com.visionreport.core.engine;
 
 import java.io.File;
 import java.io.InputStream;
-import java.net.URL;
+import java.net.URI;
 import java.nio.file.Files;
 import java.util.Base64;
 
@@ -144,7 +144,7 @@ public final class MediaUtil {
             return null;
         }
 
-        try (InputStream inputStream = new URL(url).openStream()) {
+        try (InputStream inputStream = URI.create(url).toURL().openStream()) {
             byte[] imageBytes = IOUtils.toByteArray(inputStream);
             String base64 = Base64.getEncoder().encodeToString(imageBytes);
             return new MediaModel("data:image/png;base64," + base64, "Screenshot (URL)");

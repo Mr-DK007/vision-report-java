@@ -45,7 +45,8 @@ public class FullSuiteTest {
         var test = report.createTest("Exception Test").assignCategory("Failure Scenario");
 
         // Regular exception
-        try { int x = 1 / 0; } 
+        try { @SuppressWarnings("unused")
+		int x = 1 / 0; } 
         catch (Exception e) { test.logException(e); }
 
         // Exception with null message

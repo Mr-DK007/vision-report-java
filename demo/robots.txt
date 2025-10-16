@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mr-dk007.github.io/vision-report-java/demo/sitemap.xml

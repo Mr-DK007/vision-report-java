@@ -1,44 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<!-- Link to the Parent POM -->
-	<parent>
-		<groupId>com.visionreport</groupId>
-		<artifactId>vision-report</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>io.github.mr-dk007</groupId>
+        <artifactId>vision-report</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
-	<artifactId>vision-report-tests</artifactId>
+    <artifactId>vision-report-tests</artifactId>
+    <packaging>jar</packaging>
 
-	<name>Vision Report Tests</name>
-	<description>Internal test suite for the Vision Report library.</description>
+    <name>Vision Report Tests</name>
+    <description>Internal test suite for the Vision Report library.</description>
 
-	<dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.mr-dk007</groupId>
+            <artifactId>vision-report-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.7.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-		<!-- Dependency on our library's Core (for the VisionReporter) -->
-		<dependency>
-			<groupId>com.visionreport</groupId>
-			<artifactId>vision-report-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<!-- TestNG for our testing framework -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>7.7.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.1</version> <!-- A modern, stable version -->
                 <configuration>
                     <!-- If you want to run a specific test suite XML file in the future -->
                     <!--
@@ -50,4 +46,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -1,44 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
-    <!-- Project Coordinates -->
-    <groupId>com.visionreport</groupId>
+
+    <groupId>io.github.mr-dk007</groupId>
     <artifactId>vision-report</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    
-    <!-- This MUST be 'pom' for a parent project -->
+    <version>1.0.0</version>
     <packaging>pom</packaging>
-    
+
     <name>Vision Report</name>
-    <description>Parent project for the Vision Report library, a simple and powerful test reporting tool.</description>
-    
-    <!-- Define the modules that are part of this project -->
+    <description>A simple and powerful test reporting library for creating beautiful, standalone HTML reports.</description>
+    <url>https://github.com/mr-dk007/vision-report-java</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Deepak Sahu</name>
+            <email>deepaksahu20512001@gmail.com</email>
+            <organizationUrl>https://github.com/mr-dk007</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/mr-dk007/vision-report-java.git</connection>
+        <developerConnection>scm:git:ssh://github.com:mr-dk007/vision-report-java.git</developerConnection>
+        <url>https://github.com/mr-dk007/vision-report-java/tree/main</url>
+    </scm>
+
     <modules>
         <module>vision-report-core</module>
         <module>vision-report-tests</module>
     </modules>
-    
-    <!-- Shared Properties for all modules -->
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Enforce JDK 11 compatibility -->
         <maven.compiler.release>11</maven.compiler.release>
     </properties>
-    
-    <!-- Dependency and Plugin Management for all modules -->
+
+
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Sets the compiler version for all sub-modules -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                </plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-clean-plugin</artifactId><version>3.2.0</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-resources-plugin</artifactId><version>3.3.1</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.11.0</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.2.5</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-jar-plugin</artifactId><version>3.4.1</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-install-plugin</artifactId><version>3.1.1</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-deploy-plugin</artifactId><version>3.1.2</version></plugin>
+                <plugin><groupId>org.sonatype.central</groupId><artifactId>central-publishing-maven-plugin</artifactId><version>0.4.0</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-source-plugin</artifactId><version>3.3.0</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId><version>3.6.3</version></plugin>
+                <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-gpg-plugin</artifactId><version>3.2.4</version></plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                    <autoPublish>false</autoPublish>
+                    <excludeArtifacts>
+                        <artifact>vision-report-tests</artifact>
+                    </excludeArtifacts>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-    
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

@@ -34,11 +34,16 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License">
-  <img src="https://img.shields.io/badge/Maven%20Central-1.0.0-blue.svg" alt="Maven Central">
+  <a href="https://mr-dk007.github.io/vision-report-java/demo/"><img src="https://img.shields.io/badge/🎯_Live_Demo-View_Sample_Report-blueviolet?style=for-the-badge" alt="Live Demo"></a>
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License"></a>
+  <a href="https://central.sonatype.com/artifact/io.github.mr-dk007/vision-report-core"><img src="https://img.shields.io/maven-central/v/io.github.mr-dk007/vision-report-core?color=blue" alt="Maven Central"></a>
   <img src="https://img.shields.io/badge/Java-11+-green.svg" alt="Java Version">
-  <img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg" alt="Build Status">
+  <a href="https://github.com/mr-dk007/vision-report-java/actions"><img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg" alt="Build Status"></a>
   <img src="https://img.shields.io/badge/Coverage-95%25-brightgreen.svg" alt="Code Coverage">
+  <a href="https://github.com/mr-dk007/vision-report-java/stargazers"><img src="https://img.shields.io/github/stars/mr-dk007/vision-report-java?style=social" alt="GitHub Stars"></a>
 </p>
 
 ---
@@ -79,6 +84,8 @@
 Vision Report is a **modern**, **lightweight**, and **dependency-free** reporting library for Java test automation projects. It generates a sophisticated single-page HTML report that is fully self-contained, interactive, and shareable.
 
 ### 📸 Live Report Showcase
+
+> **[🎯 Click here to view the interactive demo report](https://mr-dk007.github.io/vision-report-java/demo/demo-report.html)** - See Vision Report in action with real test data!
 
 <table>
   <tr>
@@ -132,7 +139,7 @@ Vision Report is a **modern**, **lightweight**, and **dependency-free** reportin
 
 ```xml
 <dependency>
-    <groupId>com.visionreport</groupId>
+    <groupId>io.github.mr-dk007</groupId>
     <artifactId>vision-report-core</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -593,8 +600,8 @@ We welcome contributions from the community! Here's how you can help:
 
 ### Ways to Contribute
 
-- 🐛 **Report Bugs** — Found an issue? [Open a bug report](https://github.com/visionreport/vision-report/issues/new?labels=bug)
-- 💡 **Request Features** — Have an idea? [Submit a feature request](https://github.com/visionreport/vision-report/issues/new?labels=enhancement)
+- 🐛 **Report Bugs** — Found an issue? [Open a bug report](https://github.com/mr-dk007/vision-report-java/issues/new?labels=bug)
+- 💡 **Request Features** — Have an idea? [Submit a feature request](https://github.com/mr-dk007/vision-report-java/issues/new?labels=enhancement)
 - 📝 **Improve Documentation** — Help us make the docs better
 - 🔧 **Submit Pull Requests** — Code contributions are always welcome
 
@@ -614,15 +621,15 @@ Need help? We're here for you!
 
 ### 📬 Get in Touch
 
-- **📧 Email:** support@visionreport.com
-- **🐛 GitHub Issues:** [visionreport/vision-report/issues](https://github.com/visionreport/vision-report/issues)
-- **💬 Discussions:** [GitHub Discussions](https://github.com/visionreport/vision-report/discussions)
+- **📧 Email:** deepaksahu20512001@gmail.com
+- **🐛 GitHub Issues:** [Report Issues](https://github.com/mr-dk007/vision-report-java/issues)
+- **💬 Discussions:** [GitHub Discussions](https://github.com/mr-dk007/vision-report-java/discussions)
 
 ### 📚 Resources
 
-- **📖 Documentation:** [Full API Documentation](https://mr-dk007.github.io/vision-report-java/)
-- **💻 Examples:** [Sample Projects](https://github.com/visionreport/examples)
-- **🎥 Tutorials:** [Video Guides](https://visionreport.com/tutorials)
+- **📖 Documentation:** [Full API Documentation](https://mr-dk007.github.io/vision-report-java/docs/)
+- **🎯 Live Demo:** [Interactive Sample Report](https://mr-dk007.github.io/vision-report-java/demo/demo-report.html)
+- **💻 Source Code:** [GitHub Repository](https://github.com/mr-dk007/vision-report-java)
 
 ---
 
@@ -631,8 +638,8 @@ Need help? We're here for you!
 If you find Vision Report helpful, please consider giving it a ⭐ on GitHub! It helps us grow and improve the project.
 
 <p align="center">
-  <a href="https://github.com/visionreport/vision-report">
-    <img src="https://img.shields.io/github/stars/visionreport/vision-report?style=social" alt="GitHub Stars">
+  <a href="https://github.com/mr-dk007/vision-report-java">
+    <img src="https://img.shields.io/github/stars/mr-dk007/vision-report-java?style=social" alt="GitHub Stars">
   </a>
 </p>
 

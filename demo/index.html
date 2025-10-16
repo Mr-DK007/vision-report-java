@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Vision Report - Beautiful HTML Test Reports for Java</title>
+    <meta name="title" content="Vision Report - Beautiful HTML Test Reports for Java">
+    <meta name="description"
+        content="Create stunning, interactive HTML test automation reports with Vision Report. Zero dependencies, single-file output, perfect for Java test automation frameworks like TestNG, JUnit, and Selenium.">
+    <meta name="keywords"
+        content="vision report, test automation, html reports, java testing, testng reports, junit reports, selenium reports, test reporting, automation testing, qa testing">
+    <meta name="author" content="Deepak Sahu">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mr-dk007.github.io/vision-report-java/">
+    <meta property="og:title" content="Vision Report - Beautiful HTML Test Reports for Java">
+    <meta property="og:description"
+        content="Create stunning, interactive HTML test automation reports with Vision Report. Zero dependencies, single-file output, perfect for Java test automation frameworks.">
+    <meta property="og:image" content="https://mr-dk007.github.io/vision-report-java/assets/Dashboard-view.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mr-dk007.github.io/vision-report-java/">
+    <meta property="twitter:title" content="Vision Report - Beautiful HTML Test Reports for Java">
+    <meta property="twitter:description"
+        content="Create stunning, interactive HTML test automation reports with Vision Report. Zero dependencies, single-file output.">
+    <meta property="twitter:image" content="https://mr-dk007.github.io/vision-report-java/assets/Dashboard-view.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mr-dk007.github.io/vision-report-java/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='80'>📊</text></svg>">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #858aa4 0%, #a586c4 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .badges {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .demo-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 40px 30px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .demo-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .demo-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .installation {
+            background: #2d3748;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .installation h3 {
+            color: #67f9ea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .code-block {
+            background: #1a202c;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        code {
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .demo-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <svg width="150" height="150" viewBox="40 50 160 120" style="display:block;margin:auto"
+                    aria-label="Vision Report Logo">
+                    <defs>
+                        <linearGradient id="auroraGradient" x1="60" y1="70" x2="180" y2="150"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#6D5BFF">
+                                <animate attributeName="stop-color" values="#6D5BFF;#00E0FF;#00FFA3;#6D5BFF" dur="3s"
+                                    repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="50%" stop-color="#00E0FF">
+                                <animate attributeName="stop-color" values="#00E0FF;#00FFA3;#FF6DCB;#00E0FF" dur="3s"
+                                    repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="100%" stop-color="#00FFA3">
+                                <animate attributeName="stop-color" values="#00FFA3;#FF6DCB;#6D5BFF;#00FFA3" dur="3s"
+                                    repeatCount="indefinite" />
+                            </stop>
+                        </linearGradient>
+                        <filter id="wingShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#6D5BFF" flood-opacity="0.25" />
+                        </filter>
+                        <linearGradient id="vrTextGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#6D5BFF" />
+                            <stop offset="100%" stop-color="#00FFA3" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 65 Q120 210 190 65 Q165 105 120 160 Q75 105 50 65 Z" fill="url(#auroraGradient)"
+                        filter="url(#wingShadow)" opacity="0.95" />
+                    <text x="120" y="120" text-anchor="middle" font-family="Montserrat, Arial, sans-serif"
+                        font-size="60" font-weight="900" fill="url(#vrTextGradient)" opacity="1"
+                        style="letter-spacing:-2px">R</text>
+                </svg>
+            </div>
+            <h1>Vision Report</h1>
+            <p class="subtitle">Create Beautiful, Interactive HTML Test Automation Reports for Java</p>
+
+            <div class="badges">
+                <span class="badge">Zero Dependencies</span>
+                <span class="badge">Single File Output</span>
+                <span class="badge">Java 11+</span>
+                <span class="badge">Maven Central</span>
+            </div>
+        </header>
+
+        <div class="demo-section">
+            <h2>🚀 Live Demo Reports</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 30px;">
+                Experience Vision Report in action! Click on any demo below to view a fully interactive HTML report.
+            </p>
+
+            <div class="demo-grid">
+                <a href="./demo-report.html" class="demo-card" target="_blank">
+                    <div class="demo-icon">🎯</div>
+                    <h3>Full Feature Demo</h3>
+                    <p>Complete showcase with 12+ test scenarios including pass, fail, skip, and exceptions</p>
+                    <span class="cta-button">View Demo →</span>
+                </a>
+
+                <a href="../assets/Dashboard-view.png" class="demo-card" target="_blank">
+                    <div class="demo-icon">📊</div>
+                    <h3>Dashboard View</h3>
+                    <p>Interactive dashboard with charts, statistics, and test execution summary</p>
+                    <span class="cta-button">View Screenshot →</span>
+                </a>
+
+                <a href="../assets/Test-view.png" class="demo-card" target="_blank">
+                    <div class="demo-icon">📋</div>
+                    <h3>Test Table View</h3>
+                    <p>Searchable and filterable test results with detailed execution logs</p>
+                    <span class="cta-button">View Screenshot →</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✨ Key Features</h2>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Zero Dependencies</h3>
+                    <p>No external libraries required. Pure Java implementation.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful UI</h3>
+                    <p>Modern, responsive design with light and dark modes.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📦</div>
+                    <h3>Single File</h3>
+                    <p>Everything in one HTML file. Easy to share and archive.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>Rich Media</h3>
+                    <p>Attach screenshots from paths, URLs, or Base64 strings.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Interactive</h3>
+                    <p>Search, filter, and drill down into test details.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Robust</h3>
+                    <p>Graceful error handling and XSS protection built-in.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <div class="installation">
+                <h3>📦 Installation</h3>
+                <p style="margin-bottom: 20px;">Add Vision Report to your Maven project:</p>
+
+                <div class="code-block">
+                    <code>&lt;dependency&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;io.github.mr-dk007&lt;/groupId&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;vision-report-core&lt;/artifactId&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.0&lt;/version&gt;<br>
+&lt;/dependency&gt;</code>
+                </div>
+
+                <h3 style="margin-top: 40px;">💻 Quick Example</h3>
+                <div class="code-block">
+                    <code>VisionReport report = new VisionReport();<br>
+report.config()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.setTitle("My Test Suite")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.setProjectName("My Project");<br>
+<br>
+report.createTest("Login Test")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.assignCategory("Smoke")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.log(Status.PASS, "User logged in");<br>
+<br>
+report.flush();</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section" style="text-align: center;">
+            <h2>🌟 Get Started</h2>
+            <p style="font-size: 1.2rem; color: #666; margin: 30px 0;">
+                Ready to create beautiful test reports?
+            </p>
+
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://github.com/mr-dk007/vision-report-java" class="cta-button"
+                    style="background: #667eea; color: white; font-size: 1.1rem;">
+                    📚 View on GitHub
+                </a>
+                <a href="https://central.sonatype.com/artifact/io.github.mr-dk007/vision-report-core" class="cta-button"
+                    style="background: #764ba2; color: white; font-size: 1.1rem;">
+                    📦 Maven Central
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 10px;">Made with ❤️ by Deepak Sahu</p>
+
+        <div class="social-links">
+            <a href="https://github.com/mr-dk007" title="GitHub" target="_blank">💻</a>
+            <a href="mailto:deepaksahu20512001@gmail.com" title="Email">📧</a>
+        </div>
+
+        <p style="opacity: 0.8; margin-top: 20px;">© 2025 Vision Report. Licensed under Apache 2.0</p>
+    </footer>
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Vision Report",
+      "description": "Beautiful HTML test automation reports for Java. Zero dependencies, single-file output, perfect for TestNG, JUnit, and Selenium.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Java 11+",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Deepak Sahu",
+        "email": "deepaksahu20512001@gmail.com"
+      },
+      "programmingLanguage": "Java",
+      "softwareVersion": "1.0.0",
+      "url": "https://mr-dk007.github.io/vision-report-java/",
+      "downloadUrl": "https://central.sonatype.com/artifact/io.github.mr-dk007/vision-report-core",
+      "codeRepository": "https://github.com/mr-dk007/vision-report-java"
+    }
+    </script>
+</body>
+
+</html>
