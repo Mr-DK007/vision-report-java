@@ -34,7 +34,7 @@
 </p>
 
 <p align="center">
-  <a href="https://mr-dk007.github.io/vision-report-java/demo/"><img src="https://img.shields.io/badge/🎯_Live_Demo-View_Sample_Report-blueviolet?style=for-the-badge" alt="Live Demo"></a>
+  <a href="https://mr-dk007.github.io/vision-report-java/demo/"><img src="https://img.shields.io/badge/Live_Demo-View_Sample_Report-blueviolet?style=for-the-badge" alt="Live Demo"></a>
 </p>
 
 <p align="center">
@@ -48,7 +48,7 @@
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
   - [Live Report Showcase](#live-report-showcase)
@@ -62,7 +62,7 @@
   - [3.2 Log Exceptions](#3-2-log-exceptions)
   - [3.3 Attach Media](#3-3-attach-media)
   - [3.4 Generate Final HTML Report](#3-4-generate-final-html-report)
-  - [3.5 Complete Example](#3-5-complete-example)
+- [3.5 Complete Example](#3-5-complete-example)
 - [4. Supported Media Types](#4-supported-media-types)
 - [5. Edge Case Handling](#5-edge-case-handling)
 - [6. Sample Report Layout](#6-sample-report-layout)
@@ -71,69 +71,72 @@
   - [Test Creation](#test-creation)
   - [Logging Steps](#logging-steps)
   - [Media Attachment](#media-attachment)
-- [Null & Empty Handling](#null-empty-handling)
+    - [From Local Path](#from-local-path)
+    - [From URL](#from-url)
+    - [From Base64](#from-base64)
+- [Null or Empty Handling](#null-or-empty-handling)
 - [License](#license)
 - [Contributing](#contributing)
-- [Contact & Support](#contact-support)
+- [Contact & Support](#support)
 - [Show Your Support](#show-your-support)
 
 ---
 
-## 📋 Overview
+## Overview
 
 Vision Report is a **modern**, **lightweight**, and **dependency-free** reporting library for Java test automation projects. It generates a sophisticated single-page HTML report that is fully self-contained, interactive, and shareable.
 
-### 📸 Live Report Showcase
+### Live Report Showcase
 
-> **[🎯 Click here to view the interactive demo report](https://mr-dk007.github.io/vision-report-java/demo/demo-report.html)** - See Vision Report in action with real test data!
+> **[Click here to view the interactive demo report](https://mr-dk007.github.io/vision-report-java/demo/demo-report.html)** - See Vision Report in action with real test data!
 
 <table>
   <tr>
     <td width="50%">
       <img src="./assets/Dashboard-view.png" alt="Dashboard View" width="100%">
-      <p align="center"><strong>📊 Dashboard View</strong><br><sub>Complete overview with charts and statistics</sub></p>
+      <p align="center"><strong>Dashboard View</strong><br><sub>Complete overview with charts and statistics</sub></p>
     </td>
     <td width="50%">
       <img src="./assets/Test-view.png" alt="Test Table View" width="100%">
-      <p align="center"><strong>📋 Test Table View</strong><br><sub>Searchable and filterable test results</sub></p>
+      <p align="center"><strong>Test Table View</strong><br><sub>Searchable and filterable test results</sub></p>
     </td>
   </tr>
   <tr>
     <td width="50%">
       <img src="./assets/Test-details-view.png" alt="Test Details" width="100%">
-      <p align="center"><strong>🔍 Test Details View</strong><br><sub>Step-by-step execution logs with timestamps</sub></p>
+      <p align="center"><strong>Test Details View</strong><br><sub>Step-by-step execution logs with timestamps</sub></p>
     </td>
     <td width="50%">
       <img src="./assets/Test-details-media-view.png" alt="Test Details with Media" width="100%">
-      <p align="center"><strong>🖼️ Media Attachments</strong><br><sub>Screenshots and visual evidence inline</sub></p>
+      <p align="center"><strong>Media Attachments</strong><br><sub>Screenshots and visual evidence inline</sub></p>
     </td>
   </tr>
 </table>
 
-### 🎯 Why Vision Report?
+### Why Vision Report?
 
-- ⚡ **Zero Dependencies** — No external libraries required
-- 🎨 **Beautiful UI** — Modern, responsive design with dark mode
-- 📦 **Single File Output** — Easy to share and archive
-- 🚀 **Production Ready** — Battle-tested in enterprise environments
-- 🔒 **Secure** — Automatic XSS protection and input sanitization
-
----
-
-## ✨ Features
-
-- ✅ **Fluent, User-Friendly API** — Simple and intuitive, designed for Java automation engineers
-- 📄 **Standalone HTML Report** — Single `.html` file containing all CSS, JS, and images
-- 📊 **Interactive Dashboard** — Overview of test results with animated charts and statistics
-- 🔍 **Detailed Test View** — Search, filter, and drill down into individual tests and step-by-step logs
-- 🖼️ **Rich Media Support** — Attach screenshots from local paths, URLs, or Base64 strings
-- 🛡️ **Robust & Fail-Safe** — Gracefully handles errors without breaking your suite
-- 🌓 **Light & Dark Mode** — Built-in theme support for user preference
-- 🔧 **Edge Case Coverage** — Handles null/empty inputs, special characters, Unicode, and missing media
+- **Zero Dependencies** — No external libraries required
+- **Beautiful UI** — Modern, responsive design with dark mode
+- **Single File Output** — Easy to share and archive
+- **Production Ready** — Battle-tested in enterprise environments
+- **Secure** — Automatic XSS protection and input sanitization
 
 ---
 
-## 🚀 Quick Start
+## Features
+
+- **Fluent, User-Friendly API** — Simple and intuitive, designed for Java automation engineers
+- **Standalone HTML Report** — Single `.html` file containing all CSS, JS, and images
+- **Interactive Dashboard** — Overview of test results with animated charts and statistics
+- **Detailed Test View** — Search, filter, and drill down into individual tests and step-by-step logs
+- **Rich Media Support** — Attach screenshots from local paths, URLs, or Base64 strings
+- **Robust & Fail-Safe** — Gracefully handles errors without breaking your suite
+- **Light & Dark Mode** — Built-in theme support for user preference
+- **Edge Case Coverage** — Handles null/empty inputs, special characters, Unicode, and missing media
+
+---
+
+## Quick Start
 
 ### 1. Add Maven Dependency
 
@@ -163,9 +166,9 @@ report.config()
 
 ---
 
-## 3. 📖 Example Test Flow
+## 3. Example Test Flow
 
-### 3.1 📝 Create a Test Case
+### 3.1 Create a Test Case
 
 Create tests with fluent API chaining for clean, readable code:
 
@@ -182,7 +185,7 @@ report.createTest("Login Test")
 
 ---
 
-### 3.2 ⚠️ Log Exceptions
+### 3.2 Log Exceptions
 
 Automatically log exceptions with full stack traces:
 
@@ -200,7 +203,7 @@ try {
 
 ---
 
-### 3.3 📸 Attach Media
+### 3.3 Attach Media
 
 Enrich your test reports with screenshots from multiple sources:
 
@@ -240,7 +243,7 @@ VR-Login and Checkout Suite - Vision Report Library - 16 Oct 2025 - 12-30-45 PM.
 
 ---
 
-## 3.5 💡 Complete Example
+## 3.5 Complete Example
 
 Here's a complete end-to-end example showing all major features:
 
@@ -286,22 +289,22 @@ public class SampleTest {
         
         // Generate Report
         report.flush();
-        System.out.println("✅ Report generated successfully!");
+        System.out.println("Report generated successfully!");
     }
 }
 ```
 
 ---
 
-## 4. 🎨 Supported Media Types
+## 4. Supported Media Types
 
 Vision Report supports multiple media attachment formats:
 
 <table border="1" cellpadding="10" cellspacing="0" width="100%">
   <tr>
-    <th align="center" width="33%">📁 Local Path</th>
-    <th align="center" width="33%">🌐 URL</th>
-    <th align="center" width="34%">🔐 Base64</th>
+    <th align="center" width="33%">Local Path</th>
+    <th align="center" width="33%">URL</th>
+    <th align="center" width="34%">Base64</th>
   </tr>
   <tr>
     <td align="center">
@@ -320,7 +323,7 @@ Vision Report supports multiple media attachment formats:
   <tr>
     <td colspan="3">
       <details>
-        <summary><strong>📝 Code Examples</strong></summary>
+        <summary><strong>Code Examples</strong></summary>
         <br>
         <strong>Local Path:</strong>
         <pre><code>MediaProvider.fromPath("checkout.png")</code></pre>
@@ -335,16 +338,16 @@ Vision Report supports multiple media attachment formats:
 
 ---
 
-## 5. 🛡️ Edge Case Handling
+## 5. Edge Case Handling
 
 Vision Report automatically handles the following edge cases gracefully:
 
-- ✔️ **Null or empty test names** → Defaults to `"Untitled Test"`
-- ✔️ **Null or empty log names/details** → Defaults to `"[No log name provided]"`
-- ✔️ **Null exceptions** → Defaults to `"Exception Occurred"`
-- ✔️ **Invalid media paths** → Safely ignored without breaking the report
-- ✔️ **Special characters & HTML** → Automatically escaped for security
-- ✔️ **Unicode text** → Fully supported in logs, test names, and descriptions
+- **Null or empty test names** → Defaults to `"Untitled Test"`
+- **Null or empty log names/details** → Defaults to `"[No log name provided]"`
+- **Null exceptions** → Defaults to `"Exception Occurred"`
+- **Invalid media paths** → Safely ignored without breaking the report
+- **Special characters & HTML** → Automatically escaped for security
+- **Unicode text** → Fully supported in logs, test names, and descriptions
 
 **Example Code:**
 
@@ -358,63 +361,63 @@ report.createTest(null)
 
 ---
 
-## 6. 📊 Sample Report Layout
+## 6. Sample Report Layout
 
 The generated HTML report contains the following interactive sections:
 
 <table border="1" cellpadding="15" cellspacing="0" width="100%">
   <tr>
     <td width="50%" valign="top">
-      <h3>📊 Dashboard</h3>
+      <h3>Dashboard</h3>
       <strong>Test Summary & Analytics</strong>
       <ul>
-        <li>✅ Pass/Fail/Skip/Total counts</li>
-        <li>📈 Interactive pie & bar charts</li>
-        <li>⏱️ Execution duration</li>
-        <li>🌍 Environment details</li>
-        <li>📅 Test execution timeline</li>
+        <li>Pass/Fail/Skip/Total counts</li>
+        <li>Interactive pie & bar charts</li>
+        <li>Execution duration</li>
+        <li>Environment details</li>
+        <li>Test execution timeline</li>
       </ul>
     </td>
     <td width="50%" valign="top">
-      <h3>📋 Test Table</h3>
+      <h3>Test Table</h3>
       <strong>Searchable & Filterable</strong>
       <ul>
-        <li>🔍 Real-time search</li>
-        <li>🏷️ Filter by status/category</li>
-        <li>⏲️ Duration tracking</li>
-        <li>📊 Sortable columns</li>
-        <li>💾 Export options</li>
+        <li>Real-time search</li>
+        <li>Filter by status/category</li>
+        <li>Duration tracking</li>
+        <li>Sortable columns</li>
+        <li>Export options</li>
       </ul>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3>🔍 Test Details</h3>
+      <h3>Test Details</h3>
       <strong>Step-by-step Execution</strong>
       <ul>
-        <li>🕐 Timestamp for each step</li>
-        <li>✅ Status badges (PASS/FAIL/SKIP/INFO)</li>
-        <li>📝 Detailed log messages</li>
-        <li>⚠️ Exception stack traces</li>
-        <li>🔗 Test hierarchy</li>
+        <li>Timestamp for each step</li>
+        <li>Status badges (PASS/FAIL/SKIP/INFO)</li>
+        <li>Detailed log messages</li>
+        <li>Exception stack traces</li>
+        <li>Test hierarchy</li>
       </ul>
     </td>
     <td width="50%" valign="top">
-      <h3>🖼️ Media Viewer</h3>
+      <h3>Media Viewer</h3>
       <strong>Screenshots & Attachments</strong>
       <ul>
-        <li>🖼️ Inline image preview</li>
-        <li>🔍 Lightbox full-screen view</li>
-        <li>📎 Multiple attachment support</li>
-        <li>💾 Download capability</li>
-        <li>🎨 Responsive layout</li>
+        <li>Inline image preview</li>
+        <li>Lightbox full-screen view</li>
+        <li>Multiple attachment support</li>
+        <li>Download capability</li>
+        <li>Responsive layout</li>
       </ul>
     </td>
   </tr>
   <tr>
     <td colspan="2" align="center" bgcolor="#f6f8fa">
       <br>
-      <strong>🎯 Navigation:</strong> Sidebar with Dashboard & Test tabs • <strong>🌓</strong> Light/Dark mode toggle • <strong>📱</strong> Responsive design
+      <strong>Navigation:</strong> Sidebar with Dashboard & Test tabs • <strong>Theme:</strong> Light/Dark mode toggle • <strong>Design:</strong> Responsive
       <br><br>
     </td>
   </tr>
@@ -422,7 +425,7 @@ The generated HTML report contains the following interactive sections:
 
 ---
 
-## 7. 🎯 Status Hierarchy
+## 7. Status Hierarchy
 
 <table border="1" cellpadding="10" cellspacing="0" width="100%">
   <tr>
@@ -433,7 +436,7 @@ The generated HTML report contains the following interactive sections:
   <tr>
     <td align="center"><strong>1</strong><br><sub>(Highest)</sub></td>
     <td align="center">
-      <strong>❌ FAIL</strong>
+      <strong>FAIL</strong>
     </td>
     <td>
       <strong>Overrides all other statuses</strong><br>
@@ -443,7 +446,7 @@ The generated HTML report contains the following interactive sections:
   <tr>
     <td align="center"><strong>2</strong></td>
     <td align="center">
-      <strong>⏭️ SKIP</strong>
+      <strong>SKIP</strong>
     </td>
     <td>
       <strong>Overrides PASS and INFO</strong><br>
@@ -453,7 +456,7 @@ The generated HTML report contains the following interactive sections:
   <tr>
     <td align="center"><strong>3</strong></td>
     <td align="center">
-      <strong>✅ PASS</strong>
+      <strong>PASS</strong>
     </td>
     <td>
       <strong>Applied if no FAIL or SKIP exists</strong><br>
@@ -463,7 +466,7 @@ The generated HTML report contains the following interactive sections:
   <tr>
     <td align="center"><strong>4</strong><br><sub>(Lowest)</sub></td>
     <td align="center">
-      <strong>ℹ️ INFO</strong>
+      <strong>INFO</strong>
     </td>
     <td>
       <strong>Does not affect PASS/FAIL determination</strong><br>
@@ -473,7 +476,7 @@ The generated HTML report contains the following interactive sections:
   <tr>
     <td colspan="3" bgcolor="#f6f8fa">
       <br>
-      <strong>📌 Examples:</strong><br>
+      <strong>Examples:</strong><br>
       • <code>INFO</code> + <code>PASS</code> + <code>FAIL</code> → Final: <strong>FAIL</strong><br>
       • <code>INFO</code> + <code>PASS</code> + <code>SKIP</code> → Final: <strong>SKIP</strong><br>
       • <code>INFO</code> + <code>PASS</code> → Final: <strong>PASS</strong>
@@ -484,9 +487,9 @@ The generated HTML report contains the following interactive sections:
 
 ---
 
-## 📚 API Overview
+## API Overview
 
-### 🔹 Test Creation
+### Test Creation
 
 Create a new test with optional description and categories:
 
@@ -498,7 +501,7 @@ test.assignCategory("Category1", "Category2");
 
 ---
 
-### 🔹 Logging Steps
+### Logging Steps
 
 Log different status types for test steps:
 
@@ -511,25 +514,25 @@ test.logException(new RuntimeException("Failure example"));
 
 ---
 
-### 🔹 Media Attachment
+### Media Attachment
 
 Attach screenshots and media in multiple formats:
 
-#### 📁 From Local Path
+#### From Local Path
 
 ```java
 test.log(Status.PASS, "Screenshot step", "Attached media",
          MediaProvider.fromPath("screenshot.png"));
 ```
 
-#### 🌐 From URL
+#### From URL
 
 ```java
 test.log(Status.PASS, "Screenshot step", "Attached media",
          MediaProvider.fromUrl("https://example.com/screenshot.png"));
 ```
 
-#### 🔐 From Base64
+#### From Base64
 
 ```java
 test.log(Status.PASS, "Screenshot step", "Attached media",
@@ -538,7 +541,7 @@ test.log(Status.PASS, "Screenshot step", "Attached media",
 
 ---
 
-## 🔧 Null & Empty Handling
+## Null or Empty Handling
 
 Vision Report provides robust null-safety with intelligent defaults:
 
@@ -549,22 +552,22 @@ Vision Report provides robust null-safety with intelligent defaults:
     <th align="left" width="50%">Default Value</th>
   </tr>
   <tr>
-    <td><strong>📝 Test Name</strong></td>
+    <td><strong>Test Name</strong></td>
     <td align="center"><code>null</code> or empty</td>
     <td><code>"Untitled Test"</code></td>
   </tr>
   <tr>
-    <td><strong>📌 Log Name</strong></td>
+    <td><strong>Log Name</strong></td>
     <td align="center"><code>null</code> or empty</td>
     <td><code>"[No log name provided]"</code></td>
   </tr>
   <tr>
-    <td><strong>📄 Log Details</strong></td>
+    <td><strong>Log Details</strong></td>
     <td align="center"><code>null</code> or empty</td>
     <td><code>"[No details provided]"</code></td>
   </tr>
   <tr>
-    <td><strong>⚠️ Exception Message</strong></td>
+    <td><strong>Exception Message</strong></td>
     <td align="center"><code>null</code></td>
     <td><code>"Exception Occurred"</code></td>
   </tr>
@@ -572,14 +575,14 @@ Vision Report provides robust null-safety with intelligent defaults:
     <td colspan="3" bgcolor="#f6f8fa">
       <br>
       <details>
-        <summary><strong>💻 Example of Null-Safe Usage</strong></summary>
+        <summary><strong>Example of Null-Safe Usage</strong></summary>
         <br>
         <pre><code>// All of these will work without throwing exceptions
         <p><code>report.createTest(null);
 report.createTest("").description(null);
 report.createTest("Test").log(Status.PASS, null, null);</code></p></code></pre>
         <br>
-        <strong>✅ Result:</strong> No exceptions thrown, graceful defaults applied
+        <strong>Result:</strong> No exceptions thrown, graceful defaults applied
         <br><br>
       </details>
     </td>
@@ -588,22 +591,22 @@ report.createTest("Test").log(Status.PASS, null, null);</code></p></code></pre>
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from the community! Here's how you can help:
 
 ### Ways to Contribute
 
-- 🐛 **Report Bugs** — Found an issue? [Open a bug report](https://github.com/mr-dk007/vision-report-java/issues/new?labels=bug)
-- 💡 **Request Features** — Have an idea? [Submit a feature request](https://github.com/mr-dk007/vision-report-java/issues/new?labels=enhancement)
-- 📝 **Improve Documentation** — Help us make the docs better
-- 🔧 **Submit Pull Requests** — Code contributions are always welcome
+- **Report Bugs** — Found an issue? [Open a bug report](https://github.com/mr-dk007/vision-report-java/issues/new?labels=bug)
+- **Request Features** — Have an idea? [Submit a feature request](https://github.com/mr-dk007/vision-report-java/issues/new?labels=enhancement)
+- **Improve Documentation** — Help us make the docs better
+- **Submit Pull Requests** — Code contributions are always welcome
 
 ### Guidelines
 
@@ -615,27 +618,27 @@ We welcome contributions from the community! Here's how you can help:
 
 ---
 
-## 📧 Contact & Support
+## Support
 
 Need help? We're here for you!
 
-### 📬 Get in Touch
+### Get in Touch
 
-- **📧 Email:** deepaksahu20512001@gmail.com
-- **🐛 GitHub Issues:** [Report Issues](https://github.com/mr-dk007/vision-report-java/issues)
-- **💬 Discussions:** [GitHub Discussions](https://github.com/mr-dk007/vision-report-java/discussions)
+- **Email:** deepaksahu20512001@gmail.com
+- **GitHub Issues:** [Report Issues](https://github.com/mr-dk007/vision-report-java/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/mr-dk007/vision-report-java/discussions)
 
-### 📚 Resources
+### Resources
 
-- **📖 Documentation:** [Full API Documentation](https://mr-dk007.github.io/vision-report-java/docs/)
-- **🎯 Live Demo:** [Interactive Sample Report](https://mr-dk007.github.io/vision-report-java/demo/demo-report.html)
-- **💻 Source Code:** [GitHub Repository](https://github.com/mr-dk007/vision-report-java)
+- **Documentation:** [Full API Documentation](https://mr-dk007.github.io/vision-report-java/docs/)
+- **Live Demo:** [Interactive Sample Report](https://mr-dk007.github.io/vision-report-java/demo/demo-report.html)
+- **Source Code:** [GitHub Repository](https://github.com/mr-dk007/vision-report-java)
 
 ---
 
-## ⭐ Show Your Support
+## Show Your Support
 
-If you find Vision Report helpful, please consider giving it a ⭐ on GitHub! It helps us grow and improve the project.
+If you find Vision Report helpful, please consider giving it a star on GitHub! It helps us grow and improve the project.
 
 <p align="center">
   <a href="https://github.com/mr-dk007/vision-report-java">
@@ -646,7 +649,7 @@ If you find Vision Report helpful, please consider giving it a ⭐ on GitHub! It
 ---
 
 <p align="center">
-  <strong>Made with ❤️ by Deepak Sahu</strong>
+  <strong>Made with love by Deepak Sahu</strong>
 </p>
 
 <p align="center">
