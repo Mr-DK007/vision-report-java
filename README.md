@@ -620,7 +620,7 @@ Need help? We're here for you!
 
 ### 📚 Resources
 
-- **📖 Documentation:** [Full API Documentation](https://visionreport.com/docs)
+- **📖 Documentation:** [Full API Documentation](https://mr-dk007.github.io/vision-report-java/)
 - **💻 Examples:** [Sample Projects](https://github.com/visionreport/examples)
 - **🎥 Tutorials:** [Video Guides](https://visionreport.com/tutorials)
 
