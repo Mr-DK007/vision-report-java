@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1320, initial-scale=1.0">
+    <title>Automation Test Report</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232786d4'/%3E%3Ctext x='32' y='32' text-anchor='middle' dominant-baseline='central' font-family='Arial,sans-serif' font-size='24' font-weight='bold' fill='white'%3EVR%3C/text%3E%3C/svg%3E">
+    <style>
+        :root{--accent-color:#9c27b0;--accent-color-rgb:156,39,176;--bg-color:#e6e7ee;--border-color:#d1d9e6;--danger-color:#f44336;--danger-color-rgb:244,67,54;--font-family:Calibri,sans-serif;--header-height:60px;--info-color:#2196f3;--info-color-rgb:33,150,243;--primary-color:#2786d4;--primary-color-rgb:39,134,212;--secondary-color-rgb:123,140,160;--shadow-inset:inset 2px 2px 4px #b8b9be,inset -2px -2px 4px #fff;--shadow-soft:2px 2px 4px #b8b9be,-2px -2px 4px #fff;--sidebar-width:80px;--status-error-color:#dc3545;--status-info-color:#17a2b8;--status-pending-color:#ffc107;--status-success-color:#28a745;--success-color:#4caf50;--success-color-rgb:76,175,80;--text-color:#495057;--text-muted:#7b8ca0;--transition-speed:.1s;--warning-color:#ff9800;--warning-color-rgb:255,152,0}
+        [data-theme="dark"]{--accent-color:#ce93d8;--bg-color:#2c3138;--border-color:#3c4653bd;--primary-color:#64b5f6;--shadow-inset:inset 2px 2px 4px #1a1e23,inset -2px -2px 4px #3e454d;--shadow-soft:2px 2px 4px #1a1e23,-2px -2px 4px #3e454d;--status-error-color:#f44336;--status-info-color:#2196f3;--status-pending-color:#ff9800;--status-success-color:#4caf50;--text-color:#e5ecf3;--text-muted:#98a4b8}
+        *{-webkit-font-smoothing:antialiased!important;box-sizing:border-box;font-family:var(--font-family);margin:0;padding:0;text-rendering:optimizeLegibility!important}
+        body{min-width:1320px;overflow-x:auto}
+        svg{color:var(--text-color);height:14px;width:14px}
+        .d-none{display:none!important}
+        .d-block{display:block!important}
+        .d-flex{display:flex!important}
+        [data-tooltip]{cursor:pointer;display:inline-block;outline:none;position:relative}
+        [data-tooltip]::after,[data-tooltip]::before{opacity:0;pointer-events:none;position:absolute;transition:opacity .3s ease-in-out;transition-delay:.2s;z-index:1000}
+        [data-tooltip]::after{background:#2c3e50f2;border:1px solid #ffffff1a;border-radius:6px;color:#fff;content:attr(data-tooltip);font-size:.8rem;max-width:calc(100vw - 20px);padding:4px 8px;white-space:nowrap}
+        [data-theme="dark"] [data-tooltip]::after{background:#0f172af2;border:1px solid #ffffff26}
+        [data-tooltip]::before{border-style:solid;content:"";height:0;width:0}
+        [data-tooltip][data-placement="bottom"]::after{left:50%;top:calc(100% + 12px);transform:translateX(-50%)}
+        [data-tooltip][data-placement="bottom"]::before{border-color:#fff0 #fff0 #2c3e50f2;border-width:0 6px 6px;left:50%;top:calc(100% + 6px);transform:translateX(-50%)}
+        [data-theme="dark"] [data-tooltip][data-placement="bottom"]::before{border-color:#fff0 #fff0 #0f172af2}
+        [data-tooltip][data-placement="top"]::after{bottom:calc(100% + 12px);left:50%;transform:translateX(-50%)}
+        [data-tooltip][data-placement="top"]::before{border-color:#2c3e50f2 #fff0 #fff0;border-width:6px 6px 0;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%)}
+        [data-theme="dark"] [data-tooltip][data-placement="top"]::before{border-color:#0f172af2 #fff0 #fff0}
+        [data-tooltip][data-placement="left"]::after{right:calc(100% + 12px);top:50%;transform:translateY(-50%)}
+        [data-tooltip][data-placement="left"]::before{border-color:#fff0 #fff0 #fff0 #2c3e50f2;border-width:6px 0 6px 6px;right:calc(100% + 6px);top:50%;transform:translateY(-50%)}
+        [data-theme="dark"] [data-tooltip][data-placement="left"]::before{border-color:#fff0 #fff0 #fff0 #0f172af2}
+        [data-tooltip][data-placement="right"]::after{left:calc(100% + 12px);top:50%;transform:translateY(-50%)}
+        [data-tooltip][data-placement="right"]::before{border-color:#fff0 #2c3e50f2 #fff0 #fff0;border-width:6px 6px 6px 0;left:calc(100% + 6px);top:50%;transform:translateY(-50%)}
+        [data-theme="dark"] [data-tooltip][data-placement="right"]::before{border-color:#fff0 #0f172af2 #fff0 #fff0}
+        [data-tooltip]:hover::after,[data-tooltip]:hover::before,[data-tooltip]:focus-visible::after,[data-tooltip]:focus-visible::before,[role="tooltip"]:hover::after,[role="tooltip"]:hover::before,[role="tooltip"]:focus-visible::after,[role="tooltip"]:focus-visible::before{opacity:1;z-index:1500}
+        .scrollable{overflow:auto;scrollbar-color:var(--text-muted) var(--bg-color);scrollbar-width:thin}
+        .scrollable::-webkit-scrollbar{height:8px;width:8px}
+        .scrollable::-webkit-scrollbar-track{background:var(--bg-color);border-radius:10px;box-shadow:var(--shadow-inset)}
+        .scrollable::-webkit-scrollbar-thumb{background-color:var(--text-muted);border-radius:10px;box-shadow:var(--shadow-soft);cursor:pointer}
+        .scrollable::-webkit-scrollbar-thumb:hover{background-color:var(--text-color)}
+        .badge{border-radius:.25rem;color:#fff;cursor:pointer;display:inline-block;font-size:12px;line-height:1;margin-right:.5rem;padding:.25em .6em;position:relative;text-align:center;vertical-align:baseline;white-space:nowrap}
+        .badge-primary{background-color:var(--primary-color)}
+        .badge-secondary{background-color:var(--text-muted)}
+        .badge-success{background-color:var(--success-color)}
+        .badge-danger{background-color:var(--danger-color)}
+        .badge-warning{background-color:var(--warning-color)}
+        .badge-info{background-color:var(--info-color)}
+        .page-header{align-items:center;background-color:var(--bg-color);border-bottom:1px solid var(--border-color);display:flex;height:var(--header-height);justify-content:space-between;left:0;padding:0 20px;position:fixed;right:0;top:0;z-index:100}
+        .header-brand{align-items:center;display:flex;gap:12px}
+        .brand-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-soft);display:flex;height:40px;justify-content:center;width:40px}
+        .brand-icon svg{height:40px;width:40px}
+        .header-actions{display:flex;gap:12px}
+        .header-button{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-soft);cursor:pointer;display:flex;height:40px;justify-content:center;position:relative;width:40px}
+        .header-button:hover{box-shadow:var(--shadow-inset)}
+        .header-button svg{color:var(--text-color);height:20px;width:20px}
+        .theme-toggle .icon-moon{color:var(--text-color);display:none}
+        [data-theme="dark"] .theme-toggle .icon-sun{display:none}
+        [data-theme="dark"] .theme-toggle .icon-moon{color:var(--text-color);display:block}
+        .theme-toggle:hover svg{transform:rotate(360deg);transition:transform 2s cubic-bezier(.4,0,.2,1)}
+        .sidebar{align-items:center;background-color:var(--bg-color);border-right:1px solid var(--border-color);display:flex;flex-direction:column;height:100vh;left:0;padding:12px 0;position:fixed;top:var(--header-height);width:var(--sidebar-width);z-index:90}
+        .nav-item{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-soft);cursor:pointer;display:flex;height:48px;justify-content:center;margin:10px 0;position:relative;width:50px}
+        .nav-item:hover{box-shadow:var(--shadow-inset);color:var(--accent-color)}
+        .nav-item.active{box-shadow:var(--shadow-inset);color:var(--primary-color)}
+        .nav-item svg{height:20px;width:20px}
+        .nav-item:hover svg{transform:scale(1.1)}
+        .main-content{margin-left:var(--sidebar-width);margin-top:var(--header-height);min-height:calc(100vh - var(--header-height));transition:margin-left var(--transition-speed) ease}
+        .content-section{background-color:var(--bg-color);display:none}
+        .content-section.active{display:block}
+        .main-dashboard-layout{background-color:var(--bg-color);display:flex;flex-direction:column;max-height:calc(100vh - var(--header-height));min-height:calc(100vh - var(--header-height));padding:32px 24px}
+        .dashboard-columns{display:flex;flex:1;gap:20px;padding-bottom:10px}
+        .dashboard-col-left{display:flex;flex:2 1 0;flex-direction:column;gap:30px;min-width:0;padding-left:18px;padding-right:18px}
+        .dashboard-col-right{display:flex;flex:1 1 0;flex-direction:column;gap:30px;max-width:420px;min-width:320px;padding-left:18px;padding-right:18px}
+        .dashboard-logo-title-card{align-items:center;background:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;gap:20px;max-width:100%;min-width:320px;padding:10px 30px}
+        .dashboard-logo-circled{align-items:center;display:flex;justify-content:center}
+        .dashboard-logo-outer-circle{align-items:center;border-radius:50%;box-shadow:var(--shadow-inset);display:flex;height:56px;justify-content:center;padding:4px;width:56px}
+        .dashboard-logo-inner-circle{align-items:center;background:linear-gradient(90deg,#42a5f5 0%,#6919d2 100%);border-radius:50%;display:flex;height:48px;justify-content:center;width:48px}
+        .dashboard-logo-text{color:#fff;font-size:16px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+        .dashboard-title-rainbow{-webkit-background-clip:text;-webkit-text-fill-color:#fff0;background:linear-gradient(90deg,#1976d2,#e040fb,#1976d2);background-clip:text;color:#fff0}
+        .dashboard-datetime-cards{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin-bottom:8px}
+        .dashboard-datetime-cards .card{background:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;min-width:0}
+        .dashboard-datetime-cards .card::before{background:linear-gradient(90deg,var(--primary-color),var(--accent-color));border-radius:4px 4px 0 0;content:"";height:3px;left:0;opacity:.5;position:relative;top:0;width:100%}
+        .dashboard-datetime-cards .card-header{align-items:center;border-bottom:1px solid var(--border-color);border-radius:0;display:flex;justify-content:space-between;padding:5px 10px}
+        .dashboard-datetime-cards .card-title,.dashboard-meta-cards .card-title{color:var(--primary-color);font-size:14px;font-weight:600;text-transform:uppercase}
+        .dashboard-datetime-cards .card-icon svg{border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);color:var(--text-muted);height:24px;padding:4px;width:24px}
+        .dashboard-datetime-cards .card-body{display:flex;flex-direction:column;gap:2px;padding:10px 18px}
+        .dashboard-datetime-cards .datetime-value{color:var(--text-color);font-size:12px;font-weight:600}
+        .dashboard-status-cards{display:grid;gap:30px;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}
+        .dashboard-status-cards .card{background:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;justify-content:flex-start;min-width:100px;overflow:hidden;position:relative;z-index:1}
+        .dashboard-status-cards .card.pass{background:linear-gradient(135deg,#43e97a33 0%,#38f9d733 100%)}
+        .dashboard-status-cards .card.fail{background:linear-gradient(135deg,#ff5f6d33 0%,#ffc37133 100%)}
+        .dashboard-status-cards .card.skip{background:linear-gradient(135deg,#f7971e33 0%,#ffd20033 100%)}
+        .dashboard-status-cards .card.total{background:linear-gradient(135deg,#2196f333 0%,#9c27b033 100%)}
+        .dashboard-status-cards .card-header{-webkit-backdrop-filter:blur(10px);align-items:center;backdrop-filter:blur(10px);background:#ffffff1a;border-bottom:1px solid #fff3;border-radius:4px 4px 0 0;display:flex;justify-content:space-between;margin-bottom:25px;padding:10px;width:100%;z-index:2}
+        .dashboard-status-cards .card-title{color:var(--text-color);font-size:16px;font-weight:600;text-shadow:0 1px 2px #00000014;text-transform:uppercase}
+        .dashboard-status-cards .card-header-actions{align-items:center;display:flex;gap:8px}
+        .dashboard-status-cards .card-view-btn{-webkit-backdrop-filter:blur(15px);align-items:center;backdrop-filter:blur(15px);background:#ffffff26;border:1px solid #ffffff4d;border-radius:6px;box-shadow:0 4px 15px #0000001a;color:var(--text-color);cursor:pointer;display:flex;height:28px;justify-content:center;transition:box-shadow .2s;width:28px}
+        .dashboard-status-cards .card-icon{-webkit-backdrop-filter:blur(15px);align-items:center;backdrop-filter:blur(15px);background:#ffffff26;border:1px solid #ffffff4d;border-radius:6px;box-shadow:0 4px 15px #0000001a;display:flex;height:28px;justify-content:center;overflow:hidden;position:relative;width:28px}
+        .dashboard-status-cards .card-body{align-items:flex-end;display:flex;justify-content:space-between;width:100%;z-index:2}
+        .dashboard-status-cards .status-number,.dashboard-status-cards .status-percentage{color:var(--text-color);font-size:18px;font-weight:600;padding:0 15px;text-shadow:0 1px 2px #00000014;visibility:hidden}
+        .dashboard-status-cards .status-progressbar{margin-top:10px;padding:0 15px 15px;width:100%;z-index:2}
+        .dashboard-status-cards .status-progress{border-radius:3px;box-shadow:var(--shadow-inset);height:8px;overflow:hidden;width:100%}
+        .dashboard-status-cards .status-progress-fill{border-radius:3px;height:7px;transition:width .4s;width:0}
+        .dashboard-status-cards .status-progress-fill.pass{background:linear-gradient(90deg,#43e97b80 0%,#38f9d780 100%)}
+        .dashboard-status-cards .status-progress-fill.fail{background:linear-gradient(90deg,#ff585880 0%,#f0981980 100%)}
+        .dashboard-status-cards .status-progress-fill.skip{background:linear-gradient(90deg,#f7971e80 0%,#ffd20080 100%)}
+        .dashboard-status-cards .status-progress-fill.total{background:linear-gradient(90deg,#2196f380 0%,#21cbf380 100%)}
+        .dashboard-meta-cards{display:flex;flex-direction:column;gap:16px}
+        .dashboard-meta-cards .card{background:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;max-width:100%;min-width:200px;overflow:hidden;padding:15px;position:relative}
+        .dashboard-meta-cards .card::before{background:var(--meta-accent-gradient,linear-gradient(180deg,var(--primary-color),var(--accent-color)));border-radius:6px 0 0 6px;bottom:0;content:"";left:0;opacity:.5;position:absolute;top:0;width:4px}
+        .dashboard-meta-cards .card-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:8px;width:100%}
+        .dashboard-meta-cards .card-icon{align-items:center;background:var(--bg-color);border:1px solid var(--border-color);border-radius:1px;border-radius:4px;box-shadow:var(--shadow-soft);display:flex;height:24px;justify-content:center;width:24px}
+        .dashboard-meta-cards .card-body{align-items:center;display:flex;justify-content:space-between;width:100%}
+        .dashboard-meta-cards .meta-value{color:var(--text-color);font-size:12px;font-weight:600}
+        .dashboard-charts-grid{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin-top:8px}
+        .dashboard-charts-grid .card{align-items:flex-start;background:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;min-height:180px;min-width:0;padding:10px}
+        .dashboard-charts-grid .card:only-child,.dashboard-charts-grid .card:last-child:nth-child(odd):nth-last-child(1){grid-column:1 / -1}
+        .dashboard-charts-grid .card-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:8px;width:100%}
+        .dashboard-charts-grid .card-title{color:var(--primary-color);font-size:14px;font-weight:600;margin-bottom:0;text-transform:uppercase}
+        .dashboard-charts-grid .card-header-actions{align-items:center;display:flex;gap:8px}
+        .dashboard-charts-grid .card-download-btn{align-items:center;background:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);cursor:pointer;display:flex;height:24px;padding:5px;width:24px}
+        .dashboard-charts-grid .card-download-btn:hover{box-shadow:var(--shadow-inset)}
+        .dashboard-charts-grid .card-header-icon{align-items:center;border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);display:flex;height:24px;justify-content:center;padding:5px;width:24px}
+        .dashboard-charts-grid .card-body{align-items:stretch;display:flex;flex-direction:column;height:320px;justify-content:flex-start;min-height:220px;overflow:visible;padding-bottom:10px;position:relative;width:100%}
+        .dashboard-charts-grid .card-footer{align-items:center;display:flex;justify-content:center;width:100%}
+        .chart-container{align-items:center;display:flex;height:100%;justify-content:center;overflow:visible;position:relative;width:100%}
+        .chart-svg{display:block;height:auto;max-height:100%;max-width:100%;width:auto}
+        .chart-pie{height:280px;width:280px}
+        .chart-bar,.chart-line{height:260px;width:100%}
+        .chart-container{min-height:280px;overflow:visible}
+        #test-tag-distribution-chart{max-height:400px;overflow-x:auto;overflow-y:hidden;position:relative}
+        #test-tag-distribution-chart .chart-container{display:flex;position:relative}
+        #test-tag-distribution-chart .chart-svg-wrapper{flex:1;min-width:0}
+        #test-tag-distribution-chart .chart-y-axis{background:var(--bg-color);border-right:1px solid var(--border-color);height:100%;left:0;pointer-events:none;position:absolute;top:0;z-index:10}
+        #test-tag-distribution-chart .chart-y-axis-label{color:var(--text-muted);font-size:12px;font-weight:500;position:absolute;text-align:center;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap}
+        #test-tag-distribution-chart .chart-y-axis-value{color:var(--text-muted);font-size:11px;position:absolute;text-align:right}
+        #test-tag-distribution-chart::-webkit-scrollbar{height:8px;width:8px}
+        #test-tag-distribution-chart::-webkit-scrollbar-track{background:var(--bg-color);border-radius:4px}
+        #test-tag-distribution-chart::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:4px}
+        #test-tag-distribution-chart::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
+        #test-tag-distribution-chart::-webkit-scrollbar-corner{background:var(--bg-color)}
+        .chart-tooltip{background:#2c3e50f2;border:1px solid #ffffff1a;border-radius:6px;box-shadow:0 4px 12px #0000004d;color:#fff;font-size:12px;line-height:1.5;max-width:220px;min-width:140px;opacity:0;padding:10px 14px;pointer-events:none;position:absolute;transition:opacity .2s ease;white-space:nowrap;word-wrap:break-word;z-index:1000}
+        [data-theme="dark"] .chart-tooltip{background:#0f172af2;border:1px solid #ffffff26;box-shadow:0 4px 16px #0009}
+        .chart-tooltip br{line-height:1.6}
+        .chart-percentage-text{font-size:12px;user-select:none}
+        .chart-tooltip.show{opacity:1}
+        .legend-container{align-items:center;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:10px 12px;text-align:center;width:100%}
+        .legend-item{align-items:center;color:var(--text-muted);display:flex;font-size:11px;font-weight:500;gap:6px}
+        .legend-color{border-radius:2px;flex-shrink:0;height:12px;width:12px}
+        .chart-axis-label{fill:var(--text-muted);font-size:11px;font-weight:500}
+        .chart-grid-line{opacity:.5;stroke:var(--border-color);stroke-width:1}
+        .chart-data-element{cursor:pointer;transition:transform .1s ease}
+        .chart-data-element:hover{transform:scale(1.01)}
+        .chart-segment:hover{stroke:var(--bg-color);stroke-width:1}
+        .chart-bar-rect{transition:transform .1s ease}
+        .chart-bar-rect:hover{transform:scale(1.01)}
+        .chart-line-point{transition:r .1s ease}
+        .chart-line-point:hover{r:5}
+        .chart-line-path{fill:none;stroke-width:2.5}
+        .ui-testing-layout{display:flex;height:calc(100vh - var(--header-height))}
+        .ui-testing-col-left{border-right:1px solid var(--border-color);display:flex;flex-direction:column;height:100%;width:33.333%}
+        .ui-testing-col-left .card{background-color:var(--bg-color);height:100%}
+        .ui-testing-col-left .card-header{align-items:center;background-color:var(--bg-color);border-bottom:1px solid var(--border-color);display:flex;gap:12px;height:60px;padding:0 10px;position:sticky;top:0;z-index:10}
+        .ui-testing-col-left .card-title-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);display:flex;flex-shrink:0;height:30px;justify-content:center;width:30px}
+        .ui-testing-col-left .test-search{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-soft);display:flex;flex-grow:1;min-width:0;overflow:hidden}
+        .ui-testing-col-left .test-search-input{background-color:var(--bg-color);border:none;border-radius:8px 0 0 8px;box-shadow:var(--shadow-inset);color:var(--text-color);flex-grow:1;min-width:0;padding:6px}
+        .ui-testing-col-left .test-search-input:focus{outline:none}
+        .ui-testing-col-left .test-search-button{align-items:center;background-color:var(--bg-color);border:none;border-left:1px solid var(--border-color);cursor:pointer;display:flex;flex-shrink:0;height:30px;justify-content:center;width:30px}
+        .ui-testing-col-left .test-search-button:hover{box-shadow:var(--shadow-inset)}
+        .ui-testing-col-left .card-body{height:calc(100% - var(--header-height))}
+        .test-list-container{flex-grow:1;height:100%;overflow-y:auto}
+        .test-card{align-items:center;background-color:var(--bg-color);border-bottom:1px solid var(--border-color);cursor:pointer;display:flex;justify-content:space-between;padding:12px}
+        .test-card:hover{background:linear-gradient(135deg,rgba(var(--primary-color-rgb),.08) 0%,rgba(var(--accent-color-rgb),.05) 100%)}
+        .test-card[test-status="pass"].active{background-color:rgba(var(--success-color-rgb),.1);box-shadow:var(--shadow-inset)}
+        .test-card[test-status="fail"].active{background-color:rgba(var(--danger-color-rgb),.1);box-shadow:var(--shadow-inset)}
+        .test-card[test-status="skip"].active{background-color:rgba(var(--warning-color-rgb),.1);box-shadow:var(--shadow-inset)}
+        .test-id-box{background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;max-width:60px;min-width:60px;padding-bottom:8px;padding-top:25px;position:relative;width:60px}
+        .test-id-label{border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:12px;font-weight:600;left:0;overflow:hidden;padding:2px 5px;position:absolute;text-align:left;text-overflow:ellipsis;top:0;white-space:nowrap;width:100%;z-index:1}
+        .test-id-value{color:var(--text-color);display:block;font-size:12px;font-weight:600;overflow:hidden;padding:0 5px;text-align:left;text-overflow:ellipsis;white-space:nowrap;width:100%}
+        .test-info{flex-grow:1;margin:0 10px;overflow:hidden}
+        .test-title{color:var(--text-color);display:block;font-size:14px;margin-bottom:5px;max-width:100%;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;white-space:nowrap}
+        .test-metadata{align-items:center;color:var(--text-muted);display:flex;font-size:12px;gap:15px}
+        .test-metadata-item{align-items:center;display:flex;gap:4px}
+        .status-badge{border:solid 1px var(--border-color);border-radius:20px;box-shadow:var(--shadow-soft);color:#fff;font-size:10px;font-weight:600;padding:4px 10px;text-transform:uppercase}
+        .status-badge[test-status="pass"]{background-color:var(--success-color)}
+        .status-badge[test-status="fail"]{background-color:var(--danger-color)}
+        .status-badge[test-status="skip"]{background-color:var(--warning-color)}
+        .status-badge[test-status="info"]{background-color:var(--primary-color)}
+        .dropdown-container{position:relative}
+        .dropdown-button{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);cursor:pointer;display:flex;flex-shrink:0;height:30px;justify-content:center;position:relative;width:30px}
+        .dropdown-button:disabled{cursor:not-allowed;opacity:.5}
+        .dropdown-menu{background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);display:none;margin-top:5px;min-width:70px;position:absolute;right:0;top:100%;z-index:100}
+        .dropdown-menu.show{display:block}
+        .dropdown-option{align-items:center;border:1px solid var(--border-color);border-radius:12px;box-shadow:var(--shadow-soft);color:var(--text-color);cursor:pointer;display:flex;font-size:12px;gap:5px;margin:10px;padding:2px 8px}
+        .dropdown-option:hover,.dropdown-button:hover{box-shadow:var(--shadow-inset)}
+        .dropdown-option.active{background-color:rgba(var(--primary-color-rgb),.1);box-shadow:var(--shadow-inset)}
+        .dropdown-option-indicator{align-items:center;border-radius:50%;display:flex;height:10px;justify-content:center;margin-right:5px;width:10px}
+        .dropdown-option-indicator[test-status="all"],.dropdown-option-indicator[log-status="all"]{background:linear-gradient(45deg,var(--status-success-color) 0%,var(--status-error-color) 50%,var(--status-pending-color) 100%)}
+        .dropdown-option-indicator[test-status="pass"],.dropdown-option-indicator[log-status="pass"]{background-color:var(--status-success-color)}
+        .dropdown-option-indicator[test-status="fail"],.dropdown-option-indicator[log-status="fail"]{background-color:var(--status-error-color)}
+        .dropdown-option-indicator[test-status="skip"],.dropdown-option-indicator[log-status="skip"]{background-color:var(--status-pending-color)}
+        .dropdown-option-indicator[log-status="info"]{background-color:var(--status-info-color)}
+        .dropdown-badge{align-items:center;background-color:var(--text-muted);border-radius:10px;color:#fff;display:flex;font-size:10px;height:14px;justify-content:center;line-height:10px;min-width:28px;padding:0 4px;position:absolute;right:-8px;top:-10px}
+        .dropdown-badge[test-status="all"],.dropdown-badge[log-status="all"]{background-color:var(--text-muted)}
+        .dropdown-badge[test-status="pass"],.dropdown-badge[log-status="pass"]{background-color:var(--status-success-color)}
+        .dropdown-badge[test-status="fail"],.dropdown-badge[log-status="fail"]{background-color:var(--status-error-color)}
+        .dropdown-badge[test-status="skip"],.dropdown-badge[log-status="skip"]{background-color:var(--status-pending-color)}
+        .dropdown-badge[log-status="info"]{background-color:var(--status-info-color)}
+        .message-container{align-items:center;align-items:center;background-color:rgba(var(--secondary-color-rgb),.1);border-radius:12px;display:flex;height:90%;justify-content:center;margin:15px}
+        .message-container .message-box{color:var(--text-muted);padding:20px;text-align:center}
+        .message-container .kaomoji{color:var(--text-muted);font-size:1.2rem;margin:10px;white-space:nowrap}
+        .ui-testing-col-right{display:flex;flex-direction:column;height:100%;width:66.667%}
+        .test-details-header{align-items:center;background-color:var(--bg-color);border-bottom:1px solid var(--border-color);display:flex;gap:10px;height:60px;padding:8px 25px}
+        .test-details-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;height:30px;justify-content:center;width:30px}
+        .test-details-title{color:var(--text-muted);flex-grow:1;font-size:14px;font-weight:600;text-transform:uppercase}
+        .export-button{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);color:var(--text-color);cursor:pointer;display:flex;font-size:12px;font-weight:600;gap:8px;padding:6px 12px}
+        .export-button:hover:not(:disabled){box-shadow:var(--shadow-inset)}
+        .export-button:disabled{cursor:not-allowed;opacity:.5;pointer-events:none}
+        .test-details-content{display:flex;flex-direction:column;height:calc(100vh - var(--header-height) - 60px);overflow:hidden}
+        .test-info-section{padding:10px 10px 5px}
+        .test-info-section .card{background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-soft);margin-bottom:10px}
+        .test-info-section .card-header{align-items:center;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;padding:12px 15px}
+        .test-info-section .card-header-title,.test-info-section .card-header-actions{align-items:center;display:flex;gap:10px}
+        .test-info-section .card-header-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;height:30px;justify-content:center;width:30px}
+        .test-info-section .card-header-title h3{color:var(--text-color);font-size:14px;font-weight:600;margin:0;text-transform:uppercase}
+        .accordion-btn{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);cursor:pointer;display:flex;height:30px;justify-content:center;position:relative;width:30px}
+        .accordion-btn:hover{box-shadow:var(--shadow-inset)}
+        .test-info-section .card-body{max-height:none;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);will-change:max-height}
+        .test-info-section .card-body.collapsed{max-height:0;padding-bottom:0;padding-top:0}
+        .test-info-grid{display:flex;margin-bottom:15px;margin-top:15px}
+        .test-info-grid-col{flex:1;padding:0 15px}
+        .test-info-row{margin-bottom:15px;padding:0 15px}
+        .test-info-item{align-items:flex-start;display:flex}
+        .test-info-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;height:30px;justify-content:center;width:30px}
+        .test-info-content{display:flex;flex:1;flex-direction:column;margin-left:15px;overflow:hidden}
+        .test-info-label{color:var(--text-muted);font-size:12px;font-weight:600;text-transform:uppercase}
+        .test-info-value{color:var(--text-color);font-size:14px}
+        .test-info-ellipsis{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
+        .test-info-tags-container{align-items:center;display:flex;gap:4px;padding-top:5px}
+        .test-info-label-inline{align-items:center;color:var(--text-muted);font-size:12px;font-weight:600;margin-right:15px;text-transform:uppercase}
+        .tag-1{background-color:#5c5cdec3}
+        .tag-2{background-color:#8944d8c3}
+        .tag-3{background-color:#0e6f8ac3}
+        .tag-4{background-color:#c82b8fc3}
+        .tag-5{background-color:#7a7410c3}
+        .test-logs-section{display:flex;flex-direction:column;flex-grow:1;max-height:90%;overflow:hidden;padding:5px 10px}
+        .test-logs-section .card{background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;height:100%}
+        .test-logs-section .card-header{align-items:center;border-bottom:1px solid var(--border-color);display:flex;flex-shrink:0;justify-content:space-between;padding:8px 25px 8px 15px}
+        .test-logs-section .card-body{box-shadow:var(--shadow-inset);flex-grow:1;height:100%;overflow-y:auto;padding:15px}
+        .test-logs-section .card-header-title{align-items:center;display:flex;gap:10px}
+        .test-logs-section .card-header-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;height:30px;justify-content:center;width:30px}
+        .test-logs-section .card-header-title h3{color:var(--text-color);font-size:14px;font-weight:600;margin:0;text-transform:uppercase}
+        .test-logs-section .card-header-actions{align-items:center;display:flex;gap:10px;justify-content:center}
+        .test-log-item{border:1px solid var(--border-color);border-radius:6px;margin-bottom:10px;overflow:hidden}
+        .test-log-header{align-items:center;background-color:var(--bg-color);display:flex;height:38px}
+        .test-log-status{height:100%;width:5px}
+        .test-log-item[log-status="pass"] .test-log-status{background-color:var(--success-color)}
+        .test-log-item[log-status="fail"] .test-log-status{background-color:var(--danger-color)}
+        .test-log-item[log-status="skip"] .test-log-status{background-color:var(--warning-color)}
+        .test-log-item[log-status="info"] .test-log-status{background-color:var(--info-color)}
+        .test-log-id{align-items:center;border-right:1px solid var(--border-color);color:var(--text-color);display:flex;font-size:12px;font-weight:600;height:100%;padding:0 15px;text-transform:uppercase;white-space:nowrap}
+        .test-log-name{color:var(--text-color);flex-grow:1;font-size:14px;margin:0 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .test-log-time{align-items:center;color:var(--text-muted);display:flex;font-size:12px;gap:4px;margin-right:15px;white-space:nowrap}
+        .test-log-time svg{height:12px;width:12px}
+        .test-log-actions{display:flex;gap:10px;margin-right:12px}
+        .test-log-btn{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:4px;box-shadow:var(--shadow-soft);cursor:pointer;display:flex;height:24px;justify-content:center;width:24px}
+        .test-log-btn svg{height:14px;width:14px}
+        .test-log-btn:hover{box-shadow:var(--shadow-inset)}
+        .test-log-btn.disabled{cursor:not-allowed;opacity:.5}
+        .test-log-content{align-items:flex-start;border-top:1px solid var(--border-color);box-sizing:border-box;color:var(--text-color);display:flex;font-size:14px;max-height:0;overflow:hidden;padding:0;transition:max-height .35s cubic-bezier(.4,0,.2,1),padding .35s cubic-bezier(.4,0,.2,1);will-change:max-height}
+        .test-log-item.active .test-log-content{overflow-x:hidden;padding:18px 18px 18px 10px;scrollbar-color:var(--text-muted) #fff0;scrollbar-width:thin}
+        .test-log-content::-webkit-scrollbar{width:6px}
+        .test-log-content::-webkit-scrollbar-track{background:#fff0}
+        .test-log-content::-webkit-scrollbar-thumb{background-color:var(--text-muted);border-radius:3px}
+        .test-log-content::-webkit-scrollbar-thumb:hover{background-color:var(--text-color)}
+        .test-log-time-column{color:var(--text-muted);flex:0 0 75px;flex-shrink:0;font-size:12px;line-height:1.6;padding-right:12px}
+        .test-log-message-column{flex:1;hyphens:auto;line-height:1.6;min-width:0;overflow-wrap:break-word;word-wrap:break-word}
+        .test-log-message-column p{margin:0;padding:0}
+        .test-log-toggle svg{transform-origin:center;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+        .test-log-item.active .test-log-toggle svg{transform:rotate(180deg)}
+        #test-info-accordion-icon{transform-origin:center;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+        .test-log-time-column,.test-log-message-column{opacity:0;transition:opacity .25s ease-in-out .15s}
+        .test-log-item.active .test-log-time-column,.test-log-item.active .test-log-message-column{opacity:1}
+        .test-log-item[log-status="pass"] .test-log-id,.test-log-item[log-status="pass"] .test-log-content{background-color:#4caf501a}
+        .test-log-item[log-status="fail"] .test-log-id,.test-log-item[log-status="fail"] .test-log-content{background-color:#f443361a}
+        .test-log-item[log-status="skip"] .test-log-id,.test-log-item[log-status="skip"] .test-log-content{background-color:#ff98001a}
+        .test-log-item[log-status="info"] .test-log-id,.test-log-item[log-status="info"] .test-log-content{background-color:#2196f31a}
+        .toast-container{align-items:center;bottom:32px;display:flex;flex-direction:column;left:50%;pointer-events:none;position:fixed;transform:translateX(-50%);z-index:2000}
+        .toast-message{animation:toast-in .3s forwards,toast-out .3s 2.7s forwards;border-radius:8px;box-shadow:0 2px 12px #00000026;font-size:12px;font-weight:400;margin-top:8px;opacity:0;padding:14px 28px;pointer-events:auto;transition:opacity .5s}
+        .toast-message.toast-success{background:#d4edda;color:#155724}
+        .toast-message.toast-danger{background:#f8d7da;color:#721c24}
+        .toast-message.toast-warning{background:#fff3cd;color:#856404}
+        .toast-message.toast-info{background:#d1ecf1;color:#0c5460}
+        @keyframes toast-in {
+        from{opacity:0;transform:translateY(30px)}
+        to{opacity:1;transform:translateY(0)}
+        }
+        @keyframes toast-out {
+        to{opacity:0;transform:translateY(30px)}
+        }
+        .media-modal{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);background-color:#0009;display:none;height:100%;left:0;overflow:hidden;position:fixed;top:0;width:100%;z-index:1000}
+        .media-container{cursor:default}
+        .media-container[style*="grab"]{cursor:grab}
+        .media-modal-content{animation:modalFadeIn .3s ease-out;background-color:var(--bg-color);border:none;border-radius:16px;box-shadow:0 25px 50px -12px #00000040 0 0 0 1px #ffffff1a;display:flex;flex-direction:column;left:50%;max-height:700px;max-width:900px;min-height:50%;min-width:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%)}
+        @keyframes modalFadeIn {
+        from{opacity:0;transform:translate(-50%,-50%) scale(.9)}
+        to{opacity:1;transform:translate(-50%,-50%) scale(1)}
+        }
+        .media-modal-header{align-items:center;background-color:var(--bg-color);border-bottom:1px solid var(--border-color);display:flex;flex-shrink:0;justify-content:space-between;padding:12px 16px;position:relative}
+        .media-modal-title{align-items:center;display:flex;gap:8px}
+        .media-modal-icon{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);display:flex;height:28px;justify-content:center;width:28px}
+        .media-modal-header h5{color:var(--text-color);font-size:14px;font-weight:600;margin:0}
+        .media-modal-close{align-items:center;background:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);color:var(--text-muted);cursor:pointer;display:flex;height:32px;justify-content:center;padding:6px;transition:all .2s ease;width:32px}
+        .media-modal-close:hover{box-shadow:var(--shadow-inset);color:var(--text-color);transform:scale(.95)}
+        .media-modal-body{align-items:center;background-color:var(--bg-color);box-sizing:border-box;display:flex;flex:1;justify-content:center;overflow:hidden;padding:0;position:relative}
+        .media-container{align-items:center;display:none;height:100%;justify-content:center;margin:8px;overflow:hidden;position:relative;width:100%}
+        .media-container:not(.d-none){display:flex}
+        .media-content{background-color:#fff;border:1px solid var(--border-color);border-radius:12px;box-shadow:0 10px 25px -5px #0000001a 0 4px 6px -2px #0000000d;height:100%;object-fit:contain;width:100%}
+        .img-fluid{display:block;height:auto;max-width:100%}
+        .media-modal-footer{background-color:var(--bg-color);border-top:1px solid var(--border-color);flex-shrink:0;padding:12px 16px}
+        .media-controls{align-items:center;display:flex;gap:8px;justify-content:center}
+        .media-btn{align-items:center;background:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);color:var(--text-color);cursor:pointer;display:flex;font-size:14px;height:36px;justify-content:center;transition:all .2s ease;width:36px}
+        .media-btn:hover,.media-btn.active{box-shadow:var(--shadow-inset);transform:translateY(-1px)}
+        .draggable{cursor:grab}
+        .dragging{cursor:grabbing!important}
+        .media-btn.disabled{cursor:not-allowed;opacity:.5;pointer-events:none}
+        .media-btn:hover:not(.disabled){box-shadow:var(--shadow-inset)}
+        .loading-container{align-items:center;backdrop-filter:blur(2px);background-color:var(--bg-color);color:var(--text-muted);display:flex;flex-direction:column;height:100%;justify-content:center;left:0;position:absolute;top:0;width:100%;z-index:5}
+        .loading-icon{color:var(--text-muted);margin-bottom:10px}
+        .loading-text{color:var(--text-muted);font-size:14px;font-weight:600}
+        #annotationCanvas{color:var(--text-muted);height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;z-index:10}
+        .annotation-tools{background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:8px;bottom:50px;box-shadow:0 4px 12px #00000026;display:none;flex-direction:column;gap:10px;min-width:200px;padding:10px;position:absolute;right:50%;transform:translateX(50%);z-index:20}
+        .annotation-tools .color-picker{display:flex;gap:8px;justify-content:center}
+        .annotation-tools .color-option{border:1px solid var(--border-color);border-radius:50%;box-shadow:var(--shadow-soft);cursor:pointer;height:24px;width:24px}
+        .annotation-tools .shape-tools{display:flex;gap:8px;justify-content:center}
+        .annotation-tools .shape-btn{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);color:var(--text-color);cursor:pointer;display:flex;height:32px;justify-content:center;width:32px}
+        .annotation-tools .shape-btn svg{height:16px;width:16px}
+        .annotation-tools .shape-btn:hover,.annotation-tools .clear-btn:hover{box-shadow:var(--shadow-inset)}
+        .annotation-tools .shape-btn.active{box-shadow:var(--shadow-inset);color:var(--primary-color)}
+        .annotation-tools .clear-btn{align-items:center;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px;box-shadow:var(--shadow-soft);color:var(--text-color);cursor:pointer;display:flex;height:32px;justify-content:center;padding:4px;width:32px}
+        .color-option.active{border:1px solid var(--border-color);box-shadow:var(--shadow-inset)}
+        .media-zoom-wrapper{align-items:center;display:flex;height:100%;justify-content:center;position:relative;transition:transform .2s;width:100%;will-change:transform}
+        .download-loading{align-items:center;animation:spin 1s linear infinite;display:flex;justify-content:center;min-height:32px;min-width:32px}
+        @keyframes spin {
+        100%{transform:rotate(360deg)}
+        }
+        @keyframes slideInRight {
+        from{opacity:0;transform:translateX(100%)}
+        to{opacity:1;transform:translateX(0)}
+        }
+        @keyframes slideOutRight {
+        from{opacity:1;transform:translateX(0)}
+        to{opacity:0;transform:translateX(100%)}
+        }
+        @keyframes pulse-danger {
+        0%{background-color:var(--danger-color);box-shadow:0 0 0 0 #dc3545b3}
+        50%{background-color:#ff4757;box-shadow:0 0 0 8px #fff0}
+        100%{background-color:var(--danger-color);box-shadow:0 0 0 0 #fff0}
+        }
+        .badge-pulse{animation:pulse-danger 1.5s ease-in-out infinite;position:relative;z-index:1}
+        .badge-pulse-active{animation:pulse-danger 1.5s ease-in-out infinite;position:relative;z-index:1}
+    </style>
+</head>
+<body data-theme="light">
+    <header class="page-header" role="banner">
+        <div class="header-brand">
+            <div class="brand-icon" data-tooltip="Vision Report" data-placement="right" aria-label="Vision Report Logo">
+                <svg width="56" height="56" viewBox="40 50 160 120" style="display:block" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="auroraGradientAnimated" x1="60" y1="70" x2="180" y2="150"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#6D5BFF">
+                                <animate attributeName="stop-color" values="#6D5BFF;#00E0FF;#00FFA3;#6D5BFF" dur="3s"
+                                    repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="50%" stop-color="#00E0FF">
+                                <animate attributeName="stop-color" values="#00E0FF;#00FFA3;#FF6DCB;#00E0FF" dur="3s"
+                                    repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="100%" stop-color="#00FFA3">
+                                <animate attributeName="stop-color" values="#00FFA3;#FF6DCB;#6D5BFF;#00FFA3" dur="3s"
+                                    repeatCount="indefinite" />
+                            </stop>
+                        </linearGradient>
+                        <filter id="wingShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#6D5BFF" flood-opacity="0.25" />
+                        </filter>
+                        <linearGradient id="vrTextGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#6D5BFF" />
+                            <stop offset="100%" stop-color="#00FFA3" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 65 Q120 210 190 65 Q165 105 120 160 Q75 105 50 65 Z"
+                        fill="url(#auroraGradientAnimated)" filter="url(#wingShadow)" opacity="0.95" />
+                    <text id="r-logo" x="120" y="120" text-anchor="middle" font-family="Montserrat, Arial, sans-serif"
+                        font-size="60" font-weight="900" fill="url(#vrTextGradient)" opacity="0"
+                        style="letter-spacing:-2px">R</text>
+                </svg>
+            </div>
+            <div class="brand-name" aria-label="Vision Report"></div>
+        </div>
+        <div class="header-actions" role="toolbar" aria-label="Header actions">
+            <button type="button" class="header-button" data-tooltip="Reload" data-placement="bottom"
+                aria-label="Reload page">
+                <svg fill="currentColor" aria-hidden="true">
+                    <use href="#icon-reload"></use>
+                </svg>
+            </button>
+            <button type="button" id="themeToggle" class="header-button theme-toggle" data-tooltip="Toggle Theme"
+                data-placement="bottom" aria-label="Toggle dark mode" aria-pressed="false">
+                <svg class="icon-sun" aria-hidden="true">
+                    <use href="#icon-sun"></use>
+                </svg>
+                <svg class="icon-moon" aria-hidden="true">
+                    <use href="#icon-moon"></use>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <aside class="sidebar" id="sidebar-nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-item active" data-section="dashboard" data-tooltip="Dashboard" data-placement="right"
+            aria-label="Dashboard" aria-current="page">
+            <svg fill="currentColor" aria-hidden="true">
+                <use href="#icon-dashboard"></use>
+            </svg>
+        </button>
+        <button class="nav-item" data-section="ui-testing" data-tooltip="UI Testing" data-placement="right"
+            aria-label="UI Testing">
+            <svg fill="currentColor" aria-hidden="true">
+                <use href="#icon-ui-testing"></use>
+            </svg>
+        </button>
+    </aside>
+    <main class="main-content" role="main">
+        <section id="dashboard" class="content-section active" role="region" aria-label="Dashboard">
+            <div class="main-dashboard-layout scrollable">
+                <div class="dashboard-columns">
+                    <div class="dashboard-col-left">
+                        <div class="dashboard-logo-title-card">
+                            <div class="dashboard-logo-circled">
+                                <div class="dashboard-logo-outer-circle">
+                                    <div class="dashboard-logo-inner-circle"><span class="dashboard-logo-text">VR</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-title">
+                                <h1 class="dashboard-title-rainbow">Automation Test Report</h1>
+                            </div>
+                        </div>
+                        <div class="dashboard-status-cards" role="region" aria-label="Test status summary">
+                            <div class="card pass" role="article" aria-labelledby="pass-card-title">
+                                <div class="card-header"><span class="card-title" id="pass-card-title">Pass</span>
+                                    <div class="card-header-actions">
+                                        <button class="card-view-btn" type="button" data-tooltip="View Passed Tests" data-placement="bottom" aria-label="View passed tests in UI Testing">
+                                            <svg fill="currentColor" aria-hidden="true">
+                                                <use href="#icon-eye"></use>
+                                            </svg>
+                                        </button> <span class="card-icon" aria-hidden="true"><svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"><use href="#icon-status-pass"></use></svg></span></div>
+                                </div>
+                                <div class="card-body"><span class="status-number" id="statusPassNumber" data-pass-number="0" aria-label="0 passed tests">0</span> <span class="status-percentage" id="statusPassPercentage" data-pass-percentage="0" aria-label="0 percent passed">0%</span></div>
+                                <div class="status-progressbar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Pass rate progress">
+                                    <div class="status-progress">
+                                        <div id="statusPassProgress" class="status-progress-fill pass"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card fail" role="article" aria-labelledby="fail-card-title">
+                                <div class="card-header"><span class="card-title" id="fail-card-title">Fail</span>
+                                    <div class="card-header-actions">
+                                        <button class="card-view-btn" type="button" data-tooltip="View Failed Tests" data-placement="bottom" aria-label="View failed tests in UI Testing">
+                                            <svg fill="currentColor" aria-hidden="true">
+                                                <use href="#icon-eye"></use>
+                                            </svg>
+                                        </button> <span class="card-icon" aria-hidden="true"><svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"><use href="#icon-status-fail"></use></svg></span></div>
+                                </div>
+                                <div class="card-body"><span class="status-number" id="statusFailNumber" data-fail-number="0" aria-label="0 failed tests">0</span> <span class="status-percentage" id="statusFailPercentage" data-fail-percentage="0" aria-label="0 percent failed">0%</span></div>
+                                <div class="status-progressbar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="Fail rate progress">
+                                    <div class="status-progress">
+                                        <div id="statusFailProgress" class="status-progress-fill fail"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card skip" role="article" aria-labelledby="skip-card-title">
+                                <div class="card-header"><span class="card-title" id="skip-card-title">Skip</span>
+                                    <div class="card-header-actions">
+                                        <button class="card-view-btn" type="button" data-tooltip="View Skipped Tests" data-placement="bottom" aria-label="View skipped tests in UI Testing">
+                                            <svg fill="currentColor" aria-hidden="true">
+                                                <use href="#icon-eye"></use>
+                                            </svg>
+                                        </button> <span class="card-icon" aria-hidden="true"><svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"><use href="#icon-status-skip"></use></svg></span></div>
+                                </div>
+                                <div class="card-body"><span class="status-number" id="statusSkipNumber" data-skip-number="0" aria-label="0 skipped tests">0</span> <span class="status-percentage" id="statusSkipPercentage" data-skip-percentage="0" aria-label="0 percent skipped">0%</span></div>
+                                <div class="status-progressbar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="Skip rate progress">
+                                    <div class="status-progress">
+                                        <div id="statusSkipProgress" class="status-progress-fill skip"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card total" role="article" aria-labelledby="total-card-title">
+                                <div class="card-header"><span class="card-title" id="total-card-title">Total</span>
+                                    <div class="card-header-actions">
+                                        <button class="card-view-btn" type="button" data-tooltip="View All Tests" data-placement="bottom" aria-label="View all tests in UI Testing">
+                                            <svg fill="currentColor" aria-hidden="true">
+                                                <use href="#icon-eye"></use>
+                                            </svg>
+                                        </button> <span class="card-icon" aria-hidden="true"><svg fill="currentColor" width="20" height="20" viewBox="0 0 20 20"><use href="#icon-status-total"></use></svg></span></div>
+                                </div>
+                                <div class="card-body"><span class="status-number" id="statusTotalNumber" data-total-number="0" aria-label="0 total tests">0</span> <span class="status-percentage" id="statusTotalPercentage" data-total-percentage="100" aria-label="100 percent total">100%</span></div>
+                                <div class="status-progressbar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Total tests progress">
+                                    <div class="status-progress">
+                                        <div id="statusTotalProgress" class="status-progress-fill total"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-charts-grid">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">Test Status Summary</div>
+                                    <div class="card-header-actions">
+                                        <button class="card-download-btn" title="Download Chart"
+                                            data-chart="status-summary">
+                                            <svg fill="currentColor">
+                                                <use href="#icon-export"></use>
+                                            </svg>
+                                        </button>
+                                        <span class="card-header-icon">
+                                            <svg fill="currentColor" width="24"
+                                                height="24" viewBox="0 0 24 24">
+                                                <use href="#icon-chart-pie"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body scrollable" id="test-status-summary-chart"></div>
+                                <div class="card-footer" id="test-status-summary-legend"></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">Test Tag Distribution</div>
+                                    <div class="card-header-actions">
+                                        <button class="card-download-btn" title="Download Chart"
+                                            data-chart="tag-distribution">
+                                            <svg fill="currentColor">
+                                                <use href="#icon-export"></use>
+                                            </svg>
+                                        </button>
+                                        <span class="card-header-icon">
+                                            <svg fill="currentColor" width="24"
+                                                height="24" viewBox="0 0 24 24">
+                                                <use href="#icon-chart-bar"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body scrollable" id="test-tag-distribution-chart"></div>
+                                <div class="card-footer" id="test-tag-distribution-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-col-right">
+                        <div class="dashboard-datetime-cards">
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">DATE</span><span class="card-icon"><svg fill="currentColor"><use href="#icon-calendar"></use></svg></span></div>
+                                <div class="card-body"><span class="datetime-value" id="reportDate">16 Oct, 2025</span></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">TIME</span><span class="card-icon"><svg fill="currentColor"><use href="#icon-clock"></use></svg></span></div>
+                                <div class="card-body"><span class="datetime-value" id="reportTime">03:58:34 PM IST</span></div>
+                            </div>
+                        </div>
+                        <div class="dashboard-meta-cards">
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">Project</span><span class="card-icon"><svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><use href="#icon-meta-project"></use></svg></span></div>
+                                <div class="card-body"><span class="meta-value">Not provided</span></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">Application</span><span class="card-icon"><svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><use href="#icon-meta-application"></use></svg></span></div>
+                                <div class="card-body"><span class="meta-value">Not provided</span></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">Environment</span><span class="card-icon"><svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><use href="#icon-meta-environment"></use></svg></span></div>
+                                <div class="card-body"><span class="meta-value">Not provided</span></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">Tester</span><span class="card-icon"><svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><use href="#icon-meta-tester"></use></svg></span></div>
+                                <div class="card-body"><span class="meta-value">Not provided</span></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header"><span class="card-title">Browser</span><span class="card-icon"><svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><use href="#icon-meta-browser"></use></svg></span></div>
+                                <div class="card-body"><span class="meta-value">Not provided</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="ui-testing" class="content-section" role="region" aria-label="UI Testing">
+            <div class="ui-testing-layout">
+                <div class="ui-testing-col-left">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title-icon" aria-hidden="true">
+                                <svg fill="currentColor">
+                                    <use href="#icon-ui-testing"></use>
+                                </svg>
+                            </div>
+                            <div class="test-search" role="search">
+                                <input class="test-search-input" name="test-search" placeholder="Search tests..."
+                                    aria-label="Search tests" aria-describedby="search-description">
+                                <button class="test-search-button" aria-label="Search">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="dropdown-container">
+                                <button id="testFilterButton" class="dropdown-button" aria-label="Filter Tests"
+                                    aria-haspopup="true" aria-expanded="false" data-tooltip="Filter Tests"
+                                    data-placement="bottom">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-filter"></use>
+                                    </svg>
+                                    <span class="dropdown-badge" test-status="all">All</span>
+                                </button>
+                                <div id="testFilterDropdown" class="dropdown-menu" role="listbox"
+                                    aria-labelledby="testFilterButton">
+                                    <div class="dropdown-option active" data-test-filter="all" role="option"
+                                        aria-selected="true"><span class="dropdown-option-indicator" test-status="all"
+                                        aria-hidden="true"></span> <span>All</span></div>
+                                    <div class="dropdown-option" data-test-filter="pass" role="option"
+                                        aria-selected="false"><span class="dropdown-option-indicator" test-status="pass"
+                                        aria-hidden="true"></span> <span>Pass</span></div>
+                                    <div class="dropdown-option" data-test-filter="fail" role="option"
+                                        aria-selected="false"><span class="dropdown-option-indicator" test-status="fail"
+                                        aria-hidden="true"></span> <span>Fail</span></div>
+                                    <div class="dropdown-option" data-test-filter="skip" role="option"
+                                        aria-selected="false"><span class="dropdown-option-indicator" test-status="skip"
+                                        aria-hidden="true"></span> <span>Skip</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="test-list-container scrollable" id="test-list-container" role="listbox" aria-label="Test list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-testing-col-right">
+                    <div class="test-details-header">
+                        <div class="test-details-icon">
+                            <svg fill="currentColor">
+                                <use href="#icon-details"></use>
+                            </svg>
+                        </div>
+                        <h3 class="test-details-title">Test Details</h3>
+                        <button class="export-button" id="exportButton" aria-label="Export test results">
+                            <svg fill="currentColor">
+                                <use href="#icon-export"></use>
+                            </svg>
+                            <span>Export</span>
+                        </button>
+                    </div>
+                    <div class="test-details-content">
+                        <div class="test-info-section">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-header-title">
+                                        <div class="card-header-icon">
+                                            <svg fill="currentColor" width="16" height="16">
+                                                <use href="#icon-info"></use>
+                                            </svg>
+                                        </div>
+                                        <h3 class="card-header-title">Test Information</h3>
+                                    </div>
+                                    <div class="card-header-actions">
+                                        <div class="status-badge" test-status="info">INFO</div>
+                                        <button id="test-info-accordion-toggle" class="accordion-btn"
+                                            aria-label="Toggle Test Information" aria-haspopup="false"
+                                            aria-expanded="true" type="button">
+                                            <svg id="test-info-accordion-icon" fill="currentColor">
+                                                <use href="#icon-chevron-down"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body" id="test-info-body"></div>
+                            </div>
+                        </div>
+                        <div class="test-logs-section">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-header-title">
+                                        <div class="card-header-icon">
+                                            <svg fill="currentColor">
+                                                <use href="#icon-logs"></use>
+                                            </svg>
+                                        </div>
+                                        <h3 class="card-header-title">Test Logs</h3>
+                                    </div>
+                                    <div class="card-header-actions">
+                                        <div class="test-logs-count-container">
+                                            <div class="badge badge-secondary" data-tooltip="Total Logs"
+                                                data-placement="bottom" id="total-logs-count">0</div>
+                                            <div class="badge badge-success" data-tooltip="Pass Logs"
+                                                data-placement="bottom" id="pass-logs-count">0</div>
+                                            <div class="badge badge-danger" data-tooltip="Fail Logs"
+                                                data-placement="bottom" id="fail-logs-count">0</div>
+                                            <div class="badge badge-warning" data-tooltip="Skip Logs"
+                                                data-placement="bottom" id="skip-logs-count">0</div>
+                                            <div class="badge badge-primary" data-tooltip="Info Logs"
+                                                data-placement="bottom" id="info-logs-count">0</div>
+                                        </div>
+                                        <div class="dropdown-container">
+                                            <button id="logsFilterButton" class="dropdown-button"
+                                                aria-label="Filter logs" aria-haspopup="true" aria-expanded="false"
+                                                data-tooltip="Filter Logs" data-placement="bottom">
+                                                <svg fill="currentColor">
+                                                    <use href="#icon-filter"></use>
+                                                </svg>
+                                                <span class="dropdown-badge" log-status="all">All</span>
+                                            </button>
+                                            <div id="logsFilterDropdown" class="dropdown-menu" role="listbox"
+                                                aria-labelledby="logsFilterButton">
+                                                <div class="dropdown-option active" data-log-filter="all" role="option"
+                                                    aria-selected="true"><span class="dropdown-option-indicator"
+                                                    log-status="all" aria-hidden="true"></span> <span>All</span>
+                                                </div>
+                                                <div class="dropdown-option" data-log-filter="pass" role="option"
+                                                    aria-selected="false"><span class="dropdown-option-indicator"
+                                                    log-status="pass" aria-hidden="true"></span> <span>Pass</span>
+                                                </div>
+                                                <div class="dropdown-option" data-log-filter="fail" role="option"
+                                                    aria-selected="false"><span class="dropdown-option-indicator"
+                                                    log-status="fail" aria-hidden="true"></span> <span>Fail</span>
+                                                </div>
+                                                <div class="dropdown-option" data-log-filter="skip" role="option"
+                                                    aria-selected="false"><span class="dropdown-option-indicator"
+                                                    log-status="skip" aria-hidden="true"></span> <span>Skip</span>
+                                                </div>
+                                                <div class="dropdown-option" data-log-filter="info" role="option"
+                                                    aria-selected="false"><span class="dropdown-option-indicator"
+                                                    log-status="info" aria-hidden="true"></span> <span>Info</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body scrollable" id="test-logs-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="toastContainer" class="toast-container"></div>
+    <div class="media-modal" id="mediaModal" role="dialog" aria-modal="true" aria-labelledby="modalLogId"
+        aria-describedby="modalLogId">
+        <div class="media-modal-content">
+            <div class="media-modal-header">
+                <div class="media-modal-title">
+                    <div class="media-modal-icon" aria-hidden="true">
+                        <svg id="modalMediaIcon" fill="currentColor">
+                            <use href="#icon-image"></use>
+                        </svg>
+                    </div>
+                    <h5 id="modalLogId">Log #1</h5>
+                </div>
+                <button class="media-modal-close" title="Close" data-tooltip="Close" data-placement="left"
+                    aria-label="Close modal">
+                    <svg fill="currentColor" width="24" height="24" aria-hidden="true">
+                        <use href="#icon-close"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="media-modal-body shadow-inset">
+                <div id="loadingContainer" class="loading-container" style="display:none" role="status"
+                    aria-live="polite">
+                    <div class="loading-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                            <use href="#icon-loading"></use>
+                        </svg>
+                    </div>
+                    <div class="loading-text">Loading media...</div>
+                </div>
+                <div id="mediaErrorMessage" style="display:none" role="alert" aria-live="assertive"></div>
+                <div id="imageContainer" class="media-container">
+                    <div class="media-zoom-wrapper" id="mediaZoomWrapper">
+                        <img id="modalImage" src="" alt="Screenshot"
+                            class="media-content img-fluid" crossorigin="anonymous">
+                        <canvas id="annotationCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="media-modal-footer">
+                <div class="media-controls" role="toolbar" aria-label="Media controls">
+                    <button id="zoomIn" class="media-btn" data-tooltip="Zoom In (+)" data-placement="top"
+                        aria-label="Zoom in">
+                        <svg fill="currentColor" width="16" height="16" aria-hidden="true">
+                            <use href="#icon-zoom-in"></use>
+                        </svg>
+                    </button>
+                    <button id="zoomOut" class="media-btn" data-tooltip="Zoom Out (-)" data-placement="top"
+                        aria-label="Zoom out">
+                        <svg fill="currentColor" width="16" height="16" aria-hidden="true">
+                            <use href="#icon-zoom-out"></use>
+                        </svg>
+                    </button>
+                    <div style="position:relative">
+                        <button id="annotateBtn" class="media-btn" data-tooltip="Annotate (Shift+A)"
+                            data-placement="top" aria-label="Toggle annotation mode" aria-pressed="false">
+                            <svg fill="currentColor" width="16" height="16" aria-hidden="true">
+                                <use href="#icon-pencil"></use>
+                            </svg>
+                        </button>
+                        <div id="annotationTools" class="annotation-tools" role="toolbar" aria-label="Annotation tools">
+                            <div class="color-picker" role="group" aria-label="Color picker">
+                                <div class="color-option active" data-tooltip="Red" data-placement="top"
+                                    data-color="#FF0000" style="background-color:red" role="button"
+                                    aria-label="Red color" aria-pressed="true"></div>
+                                <div class="color-option" data-tooltip="Green" data-placement="top" data-color="#00FF00"
+                                    style="background-color:#0F0" role="button" aria-label="Green color"
+                                    aria-pressed="false"></div>
+                                <div class="color-option" data-tooltip="Blue" data-placement="top" data-color="#0000FF"
+                                    style="background-color:#00F" role="button" aria-label="Blue color"
+                                    aria-pressed="false"></div>
+                                <div class="color-option" data-tooltip="Yellow" data-placement="top"
+                                    data-color="#FFFF00" style="background-color:#e6e612" role="button"
+                                    aria-label="Yellow color" aria-pressed="false"></div>
+                                <div class="color-option" data-tooltip="Pink" data-placement="top" data-color="#FF00FF"
+                                    style="background-color:#F0F" role="button" aria-label="Pink color"
+                                    aria-pressed="false"></div>
+                            </div>
+                            <div class="shape-tools" role="group" aria-label="Shape tools">
+                                <button class="shape-btn" id="rectTool" data-shape="rectangle" data-tooltip="Rectangle"
+                                    data-placement="top" aria-label="Rectangle tool" aria-pressed="false">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-rectangle"></use>
+                                    </svg>
+                                </button>
+                                <button class="shape-btn" id="circleTool" data-shape="circle" data-tooltip="Circle"
+                                    data-placement="top" aria-label="Circle tool" aria-pressed="false">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-circle"></use>
+                                    </svg>
+                                </button>
+                                <button class="shape-btn" id="lineTool" data-shape="line" data-tooltip="Line"
+                                    data-placement="top" aria-label="Line tool" aria-pressed="false">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-line"></use>
+                                    </svg>
+                                </button>
+                                <button class="shape-btn" id="arrowTool" data-shape="arrow" data-tooltip="Arrow"
+                                    data-placement="top" aria-label="Arrow tool" aria-pressed="false">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-arrow"></use>
+                                    </svg>
+                                </button>
+                                <button class="shape-btn" id="undoBtn" data-tooltip="Undo" data-placement="top"
+                                    aria-label="Undo last annotation">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-undo"></use>
+                                    </svg>
+                                </button>
+                                <button class="shape-btn" id="redoBtn" data-tooltip="Redo" data-placement="top"
+                                    aria-label="Redo last undone annotation">
+                                    <svg fill="currentColor" aria-hidden="true">
+                                        <use href="#icon-redo"></use>
+                                    </svg>
+                                </button>
+                                <button class="clear-btn" id="clearAnnotations" data-tooltip="Clear All"
+                                    data-placement="top" aria-label="Clear all annotations">
+                                    <svg fill="currentColor" width="14" height="14" aria-hidden="true">
+                                        <use href="#icon-close"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="downloadBtn" class="media-btn" data-tooltip="Download (Shift+D)" data-placement="top"
+                        aria-label="Download screenshot">
+                        <span class="download-btn-icon">
+                            <svg fill="currentColor"
+                                width="16" height="16" aria-hidden="true">
+                                <use href="#icon-download"></use>
+                            </svg>
+                        </span>
+                        <span class="download-btn-loading" style="display:none"
+                            aria-hidden="true">
+                            <svg fill="currentColor" width="16" height="16" class="download-loading">
+                                <use href="#icon-loading"></use>
+                            </svg>
+                        </span>
+                    </button>
+                    <button id="reset" class="media-btn" data-tooltip="Reset (Shift+R)" data-placement="top"
+                        aria-label="Reset view">
+                        <svg fill="currentColor" width="16" height="16" aria-hidden="true">
+                            <use href="#icon-reload"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <svg style="display: none;">
+        <symbol id="icon-reload" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.65 6.35A7.95 7.95 0 0012 4a8 8 0 108 8h-2a6 6 0 11-6-6c1.3 0 2.5.44 3.45 1.17L13 11h7V4l-2.35 2.35z">
+            </path>
+        </symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+            </path>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21.75 12.33A9 9 0 1 1 11.67 2.25a7 7 0 0 0 10.08 10.08z"></path>
+        </symbol>
+        <symbol id="icon-dashboard" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="3" y="3" width="8" height="7" />
+            <rect x="14" y="3" width="8" height="7" />
+            <rect x="14" y="14" width="8" height="7" />
+            <rect x="3" y="14" width="8" height="7" />
+        </symbol>
+        <symbol id="icon-ui-testing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+        </symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z" />
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+        </symbol>
+        <symbol id="icon-eye" viewBox="0 0 20 20" fill="currentColor">
+            <path
+                d="M10 4c-5 0-8 6-8 6s3 6 8 6 8-6 8-6-3-6-8-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6.5a2 2 0 100 4 2 2 0 000-4z" />
+        </symbol>
+        <symbol id="icon-status-pass" viewBox="0 0 20 20" fill="currentColor">
+            <circle cx="10" cy="10" r="9" stroke="#4caf50" stroke-width="2" fill="#e8f5e9" />
+            <polyline points="6,11 9,14 14,7" fill="none" stroke="#4caf50" stroke-width="2" />
+        </symbol>
+        <symbol id="icon-status-fail" viewBox="0 0 20 20" fill="currentColor">
+            <circle cx="10" cy="10" r="9" stroke="#f44336" stroke-width="2" fill="#ffebee" />
+            <line x1="7" y1="7" x2="13" y2="13" stroke="#f44336" stroke-width="2" />
+            <line x1="13" y1="7" x2="7" y2="13" stroke="#f44336" stroke-width="2" />
+        </symbol>
+        <symbol id="icon-status-skip" viewBox="0 0 20 20" fill="currentColor">
+            <circle cx="10" cy="10" r="9" stroke="#ff9800" stroke-width="2" fill="#fff3e0" />
+            <rect x="7" y="9" width="6" height="2" fill="#ff9800" />
+        </symbol>
+        <symbol id="icon-status-total" viewBox="0 0 20 20" fill="currentColor">
+            <circle cx="10" cy="10" r="9" stroke="#2196f3" stroke-width="2" fill="#e3f2fd" /><text x="10" y="13"
+                text-anchor="middle" font-size="10" fill="#2196f3" font-family="Arial">Σ</text>
+        </symbol>
+        <symbol id="icon-meta-project" viewBox="0 0 16 16" fill="currentColor">
+            <rect x="3" y="3" width="10" height="10" rx="2" fill="#ffe082" stroke="#ffb300" stroke-width="1" />
+            <rect x="6" y="6" width="4" height="4" fill="#ffb300" />
+        </symbol>
+        <symbol id="icon-meta-application" viewBox="0 0 16 16" fill="currentColor">
+            <rect x="2" y="4" width="12" height="8" rx="2" fill="#e1bee7" stroke="#8e24aa" stroke-width="1" />
+            <rect x="6" y="12" width="4" height="1" fill="#8e24aa" />
+        </symbol>
+        <symbol id="icon-meta-environment" viewBox="0 0 16 16" fill="currentColor">
+            <rect x="2" y="6" width="12" height="6" rx="2" fill="#c8e6c9" stroke="#388e3c" stroke-width="1" />
+            <circle cx="8" cy="9" r="2" fill="#388e3c" />
+        </symbol>
+        <symbol id="icon-meta-tester" viewBox="0 0 16 16" fill="currentColor">
+            <circle cx="8" cy="6" r="3" fill="#90caf9" />
+            <rect x="4" y="10" width="8" height="4" rx="2" fill="#1976d2" />
+        </symbol>
+        <symbol id="icon-meta-browser" viewBox="0 0 16 16" fill="currentColor">
+            <circle cx="8" cy="8" r="7" stroke="#1976d2" stroke-width="1" fill="#e3f2fd" />
+            <circle cx="8" cy="8" r="3" fill="#1976d2" />
+        </symbol>
+        <symbol id="icon-meta-custom" viewBox="0 0 16 16" fill="currentColor">
+            <rect x="2" y="2" width="12" height="12" rx="2" fill="#ffcdd2" stroke="#f44336" stroke-width="1" />
+            <circle cx="8" cy="8" r="3" fill="#f44336" />
+            <rect x="7" y="6" width="2" height="4" fill="#fff" />
+        </symbol>
+        <symbol id="icon-export" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </symbol>
+        <symbol id="icon-chart-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+        </symbol>
+        <symbol id="icon-chart-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="20" x2="12" y2="10"></line>
+            <line x1="18" y1="20" x2="18" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="16"></line>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </symbol>
+        <symbol id="icon-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </symbol>
+        <symbol id="icon-details" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="2" fill="none" />
+            <line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="2" />
+            <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2" />
+            <line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2" />
+        </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 16 16" fill="currentColor">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 20 20" fill="currentColor">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2" fill="none" />
+            <rect x="9" y="8" width="2" height="6" rx="1" fill="currentColor" />
+            <rect x="9" y="5" width="2" height="2" rx="1" fill="currentColor" />
+        </symbol>
+        <symbol id="icon-test-id" viewBox="0 0 16 16" fill="currentColor">
+            <path
+                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+            <path
+                d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z" />
+        </symbol>
+        <symbol id="icon-test-name" viewBox="0 0 16 16" fill="currentColor">
+            <path
+                d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+        </symbol>
+        <symbol id="icon-description" viewBox="0 0 16 16" fill="currentColor">
+            <path
+                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+            <path
+                d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+        </symbol>
+        <symbol id="icon-duration" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+        </symbol>
+        <symbol id="icon-tags" viewBox="0 0 16 16" fill="currentColor">
+            <path
+                d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z" />
+            <path
+                d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z" />
+        </symbol>
+        <symbol id="icon-logs" viewBox="0 0 16 16" fill="currentColor">
+            <path
+                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+            <path
+                d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+        </symbol>
+        <symbol id="icon-image" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+            <path
+                d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </symbol>
+        <symbol id="icon-zoom-in" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z" />
+        </symbol>
+        <symbol id="icon-zoom-out" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            <path d="M7 9h5v1H7z" />
+        </symbol>
+        <symbol id="icon-annotate" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+        </symbol>
+        <symbol id="icon-pencil" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z" />
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+        </symbol>
+        <symbol id="icon-loading" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.15" />
+            <path d="M22 12a10 10 0 0 0-10-10" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s"
+                    repeatCount="indefinite" />
+            </path>
+        </symbol>
+        <symbol id="icon-rectangle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        </symbol>
+        <symbol id="icon-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"></circle>
+        </symbol>
+        <symbol id="icon-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="19" x2="19" y2="5"></line>
+        </symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </symbol>
+        <symbol id="icon-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 14L4 9l5-5"></path>
+            <path d="M4 9h10a4 4 0 0 1 4 4v1"></path>
+        </symbol>
+        <symbol id="icon-redo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 14l5-5-5-5"></path>
+            <path d="M20 9H10a4 4 0 0 0-4 4v1"></path>
+        </symbol>
+    </svg>
+
+    <script>
+
+        const testDataStore = {
+        };
+
+        const chartData = {
+            statusSummary: [
+            ],
+            tagDistribution: [
+            ]
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+                (function () {
+                    "use strict";
+                
+                function createMessageContainer(e,s,a=""){const n=document.createElement("div");return n.className=`message-container d-flex ${a}`.trim(),n.innerHTML=`<div class="message-box"><div class="kaomoji">${e}</div><p>${s}</p></div>`,n}
+                
+                function showToast(t,e="info"){const o=document.getElementById("toastContainer");if(!o)return;const n=document.createElement("div");n.className=`toast-message toast-${e}`,n.textContent=t,o.appendChild(n),setTimeout((()=>{n.style.opacity=0,setTimeout((()=>n.remove()),500)}),3e3)}
+
+                    const ThemeManager={init(){this.body=document.body,this.btn=document.getElementById("themeToggle"),this.key="visionTheme",this.theme=this.body.getAttribute("data-theme")||"light",this.load(),this.btn?.addEventListener("click",(()=>this.toggle()))},set(t){if(["light","dark"].includes(t)){this.body.setAttribute("data-theme",t),this.theme=t;try{localStorage.setItem(this.key,t)}catch(t){}this.btn?.setAttribute("aria-pressed","dark"===t),document.dispatchEvent(new CustomEvent("themeChanged",{detail:{theme:t}}))}},toggle(){const t="dark"===this.theme?"light":"dark";this.set(t),"function"==typeof showToast&&showToast(`Theme switched to ${t.charAt(0).toUpperCase()+t.slice(1)} Mode`,"info")},load(){let t=this.theme;try{const e=localStorage.getItem(this.key);["light","dark"].includes(e)&&(t=e)}catch(t){}this.set(t)}};
+
+                    const Navigation={init(){this.nav=document.querySelectorAll(".sidebar .nav-item"),this.sec=document.querySelectorAll(".content-section"),this.nav.length&&this.sec.length&&this.nav.forEach((t=>t.addEventListener("click",(e=>{e.preventDefault(),this.activate(t)}))))},activate(t){const e=t?.getAttribute("data-section");if(!e||!t)return;document.getElementById(e)&&(this.nav.forEach((e=>{const i=e===t;e.classList.toggle("active",i),e.setAttribute("aria-selected",i),e.setAttribute("aria-current",i?"page":"false")})),this.sec.forEach((t=>t.classList.toggle("active",t.id===e))))}};
+                    
+                    const Dashboard={init(){this.anim(),this.btns(),this.charts(),document.querySelector(".dashboard-charts-grid")?.classList.toggle("two-cards",2===document.querySelectorAll(".dashboard-charts-grid .card").length)},stats(){const t={};return"undefined"!=typeof chartData&&chartData.tagDistribution&&chartData.tagDistribution.forEach((e=>t[e.label]={total:0,pass:0,fail:0,skip:0})),"undefined"!=typeof testDataStore&&Object.values(testDataStore).forEach((e=>{e.tags&&"object"==typeof e.tags&&Object.values(e.tags).forEach((a=>{t[a]&&(t[a].total++,t[a][e.status]++)}))})),t},val(t,e,a,s,i){if(e===a)return void(t.textContent=i?`${a}%`:a);const n=performance.now(),r=o=>{const l=o-n,c=Math.min(l/s,1),d=Math.round(e+c*(2-c)*(a-e));t.textContent=i?`${d}%`:d,c<1&&requestAnimationFrame(r)};requestAnimationFrame(r)},card(t){const e=document.getElementById(`status${t.id}Number`),a=document.getElementById(`status${t.id}Percentage`),s=document.getElementById(`status${t.id}Progress`);if(!e||!a||!s)return;const i=parseInt(e.getAttribute(t.numberAttr),10)||0,n=parseInt(a.getAttribute(t.percentageAttr),10)||0;[e,a].forEach((t=>t.style.visibility="visible")),s.style.cssText="transition:none;width:0%",s.offsetHeight,s.style.cssText=`transition:width 2s cubic-bezier(0.25,0.46,0.45,0.94);width:${n}%`,this.val(e,0,i,2e3,!1),this.val(a,0,n,2e3,!0)},anim(){[{id:"Pass",numberAttr:"data-pass-number",percentageAttr:"data-pass-percentage"},{id:"Fail",numberAttr:"data-fail-number",percentageAttr:"data-fail-percentage"},{id:"Skip",numberAttr:"data-skip-number",percentageAttr:"data-skip-percentage"},{id:"Total",numberAttr:"data-total-number",percentageAttr:"data-total-percentage"}].forEach(((t,e)=>setTimeout((()=>this.card(t)),150*e)))},btns(){document.querySelectorAll(".dashboard-status-cards .card-view-btn").forEach((t=>t.addEventListener("click",(t=>{const e=t.currentTarget.closest(".card");if(!e)return;const a=e.classList.contains("pass")?"pass":e.classList.contains("fail")?"fail":e.classList.contains("skip")?"skip":"all";document.dispatchEvent(new CustomEvent("navigateToUITesting",{detail:{filter:a}}))}))))},charts(){this.pie(),this.bar(),this.down()},pie(){const t=document.getElementById("test-status-summary-chart"),e=document.getElementById("test-status-summary-legend");if(!t||!e||"undefined"==typeof chartData)return;const a=chartData.statusSummary.filter((t=>t.value>0)),s=a.reduce(((t,e)=>t+e.value),0);if(!s)return;let i=0;const n=this.svg("chart-svg chart-pie","0 0 280 280"),r=this.tip(t);a.forEach((e=>{const a=e.value/s*360,o=(i-90)*Math.PI/180,l=(i+a-90)*Math.PI/180,c=140+100*Math.cos(o),d=140+100*Math.sin(o),h=140+100*Math.cos(l),g=140+100*Math.sin(l),m=this.el("path",{d:`M 140 140 L ${c} ${d} A 100 100 0 ${a>180?1:0} 1 ${h} ${g} Z`,fill:e.color,class:"chart-data-element chart-segment"});this.hover(m,`${e.label}: ${e.value} (${Math.round(e.value/s*100)}%)`,r,t),n.appendChild(m);const u=i+a/2,p=140+65*Math.cos((u-90)*Math.PI/180),f=140+65*Math.sin((u-90)*Math.PI/180),b=a<30?"12px":a<60?"14px":"18px";n.appendChild(this.el("text",{x:p,y:f,"text-anchor":"middle","dominant-baseline":"middle",fill:"#fff","font-weight":"700","font-size":b,class:"chart-percentage-text",style:"pointer-events:none"},`${Math.round(e.value/s*100)}%`)),i+=a})),this.add(t,n),this.leg(e,a)},bar(){const t=document.getElementById("test-tag-distribution-chart"),e=document.getElementById("test-tag-distribution-legend");if(!t||!e||"undefined"==typeof chartData)return;const a=chartData.tagDistribution.filter((t=>t.value>0));if(!a.length)return;const s=Math.max(...a.map((t=>t.value))),i=((e,a)=>{const s=t.offsetWidth||600;let i,n,r;e<=5?(i=Math.min(80,Math.floor((s-100)/(1.5*e))),n=Math.floor(.6*i),r=60):e<=8?(i=Math.min(60,Math.floor((s-100)/(1.3*e))),n=Math.floor(.5*i),r=65):(i=50,n=25,r=70);const o=a>100?10:a>50?8:5,l=e>8?"9px":e>5?"10px":"11px",c=e>8?"11px":"12px",d=e>8?8:e>5?10:12;return{bar:{width:i,spacing:n,minHeight:5},margins:{left:10,right:20,top:40,bottom:60},chart:{height:a>100?280:a>50?240:200,minWidth:300,containerWidth:s},yAxis:{width:r,labelOffset:Math.floor(r/2),valueOffset:8,gridDivisions:o},labels:{xAxis:{offsetY:20,maxLength:d,fontSize:l},values:{offsetY:5,fontSize:c,fontWeight:"600"},axisTitles:{xAxis:{text:"Test Tags",offsetY:8},yAxis:{text:"Test Count"},fontSize:"12px"}},colors:["#5c5cdec3","#8944d8c3","#0e6f8ac3","#c82b8fc3","#7a7410c3","#e74c3cc3","#3498dbc3","#f39c12c3","#16a085c3","#9b59b6c3"]}})(a.length,s);console.log("📊 Chart Config:",{tags:a.length,maxValue:s,barWidth:i.bar.width,barSpacing:i.bar.spacing,chartHeight:i.chart.height,yAxisWidth:i.yAxis.width,gridLines:i.yAxis.gridDivisions});const n=i.bar.width+i.bar.spacing,r=i.margins.left+a.length*n+i.margins.right,o=Math.max(i.chart.minWidth,r),l=i.margins.top+i.chart.height+i.margins.bottom,c=this.stats(),d=this.svg("chart-svg chart-bar",`0 0 ${o} ${l}`),h={x:i.margins.left,y:i.margins.top,width:o-i.margins.left-i.margins.right,height:i.chart.height},g=this.tip(t);Object.assign(d.style,{width:"100%",height:"auto",minWidth:o+"px"}),d.setAttribute("preserveAspectRatio","xMinYMid meet");const m=[];for(let t=0;t<=i.yAxis.gridDivisions;t++){const e=h.y+h.height/i.yAxis.gridDivisions*t,a=Math.round(s-s/i.yAxis.gridDivisions*t);m.push({value:a,y:e}),d.appendChild(this.el("line",{x1:h.x,y1:e,x2:h.x+h.width,y2:e,class:"chart-grid-line"}))}a.forEach(((e,a)=>{const r=Math.max(e.value/s*h.height,i.bar.minHeight),o=h.x+a*n+i.bar.spacing/2,l=h.y+h.height-r,m=c[e.label]||{total:0,pass:0,fail:0,skip:0},u=`<strong>${e.label}</strong><br/>Total: ${m.total} tests<br/>Pass: ${m.pass} tests<br/>Fail: ${m.fail} tests<br/>Skip: ${m.skip} tests`,p=this.el("rect",{x:o,y:l,width:i.bar.width,height:r,fill:i.colors[a%i.colors.length],class:"chart-data-element chart-bar-rect"});this.hover(p,u,g,t),d.appendChild(p);const f=e.label.length>i.labels.xAxis.maxLength?e.label.substring(0,i.labels.xAxis.maxLength)+"...":e.label;d.appendChild(this.el("text",{x:o+i.bar.width/2,y:h.y+h.height+i.labels.xAxis.offsetY,"text-anchor":"middle",class:"chart-axis-label","font-size":i.labels.xAxis.fontSize,title:e.label},f)),d.appendChild(this.el("text",{x:o+i.bar.width/2,y:l-i.labels.values.offsetY,"text-anchor":"middle",class:"chart-axis-label","font-size":i.labels.values.fontSize,"font-weight":i.labels.values.fontWeight},e.value))})),d.appendChild(this.el("text",{x:h.x+h.width/2,y:l-i.labels.axisTitles.xAxis.offsetY,"text-anchor":"middle",class:"chart-axis-label","font-size":i.labels.axisTitles.fontSize},i.labels.axisTitles.xAxis.text));const u=document.createElement("div");u.className="chart-container";const p=document.createElement("div");p.className="chart-y-axis",p.style.width=i.yAxis.width+"px";const f=document.createElement("div");f.className="chart-y-axis-label",f.textContent=i.labels.axisTitles.yAxis.text,f.style.left=i.yAxis.width/2+"px",f.style.fontSize=i.labels.axisTitles.fontSize,f.style.transformOrigin="center center",p.appendChild(f),m.forEach((t=>{const e=document.createElement("div");e.className="chart-y-axis-value",e.textContent=t.value;const a=t.y/l*100;e.style.top=a+"%",e.style.right=i.yAxis.valueOffset+"px",e.style.transform="translateY(-50%)",p.appendChild(e)}));const b=document.createElement("div");b.className="chart-svg-wrapper",b.style.marginLeft=i.yAxis.width+"px",b.appendChild(d),u.appendChild(p),u.appendChild(b),t.appendChild(u),this.leg(e,a.map(((t,e)=>({label:t.label,color:i.colors[e%i.colors.length]}))))},el(t,e={},a=""){const s=document.createElementNS("http://www.w3.org/2000/svg",t);return Object.entries(e).forEach((([t,e])=>s.setAttribute(t,e))),a&&(s.textContent=a),s},svg(t,e){return this.el("svg",{class:t,viewBox:e})},tip(t){const e=document.createElement("div");return e.className="chart-tooltip",t.appendChild(e),e},hover(t,e,a,s){t.addEventListener("mouseenter",(()=>{a.innerHTML=e,a.classList.add("show"),a.offsetHeight})),t.addEventListener("mousemove",(t=>{const e=s.getBoundingClientRect(),i=t.clientX-e.left,n=t.clientY-e.top,r=a.getBoundingClientRect(),o=r.width||180,l=r.height||80,c=e.width,d=e.height,h=15,g=12;let m,u;m=i+o+g+h<=c?i+g:i-o-g>=h?i-o-g:Math.max(h,Math.min(i-o/2,c-o-h)),u=n-l-g>=h?n-l-g:n+l+g+h<=d?n+g:Math.max(h,Math.min(n-l/2,d-l-h)),a.style.left=m+"px",a.style.top=u+"px"})),t.addEventListener("mouseleave",(()=>a.classList.remove("show")))},add(t,e){const a=document.createElement("div");a.className="chart-container",a.appendChild(e),t.appendChild(a)},leg(t,e){const a=document.createElement("div");a.className="legend-container",e.forEach((t=>{const e=document.createElement("div"),s=document.createElement("div"),i=document.createElement("span");e.className="legend-item",s.className="legend-color",s.style.backgroundColor=t.color,i.textContent=t.label,e.appendChild(s),e.appendChild(i),a.appendChild(e)})),t.appendChild(a)},down(){document.querySelectorAll(".card-download-btn").forEach((t=>t.addEventListener("click",(()=>{const e=t.getAttribute("data-chart");e&&this.dl(e)}))))},dl(t){const e={"status-summary":"test-status-summary-chart","tag-distribution":"test-tag-distribution-chart"}[t];if(!e)return this.msg("Unknown chart type for download","warning");const a=document.querySelector(`#${e} .chart-svg`);if(!a)return this.msg("Chart not found for download","warning");try{const e=document.querySelector(`[data-chart="${t}"]`);e&&(e._orig=e.innerHTML,e.innerHTML='<span style="display:inline-block;animation:spin 1s linear infinite;">⟳</span>',e.disabled=!0);const s=a.cloneNode(!0),i=s.getAttribute("viewBox");let[n,r]=[800,600];if(i){const[,,t,e]=i.split(" ").map(Number);[n,r]=[t||800,e||600]}["xmlns","xmlns:xlink","width","height"].forEach(((t,e)=>s.setAttribute(t,e<2?"http://www.w3.org/"+(e?"1999/xlink":"2000/svg"):[n,r][e-2])));const o=getComputedStyle(document.documentElement),l={"--success-color":o.getPropertyValue("--success-color").trim()||"#4caf50","--danger-color":o.getPropertyValue("--danger-color").trim()||"#f44336","--warning-color":o.getPropertyValue("--warning-color").trim()||"#ff9800","--primary-color":o.getPropertyValue("--primary-color").trim()||"#2786d4","--secondary-color":o.getPropertyValue("--secondary-color").trim()||"#6c757d","--info-color":o.getPropertyValue("--info-color").trim()||"#17a2b8","--accent-color":o.getPropertyValue("--accent-color").trim()||"#e83e8c","--text-color":o.getPropertyValue("--text-color").trim()||"#495057","--text-muted":o.getPropertyValue("--text-muted").trim()||"#7b8ca0","--bg-color":o.getPropertyValue("--bg-color").trim()||"#ffffff","--border-color":o.getPropertyValue("--border-color").trim()||"#dee2e6"};let c=(new XMLSerializer).serializeToString(s);Object.entries(l).forEach((([t,e])=>{e&&(c=c.replace(new RegExp(`var\\(\\s*${t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}\\s*\\)`,"g"),e))}));const d=document.createElement("canvas"),h=d.getContext("2d"),g=2;d.width=n*g,d.height=r*g,h.scale(g,g),h.fillStyle=l["--bg-color"]||"#ffffff",h.fillRect(0,0,n,r);const m=new Image,u=URL.createObjectURL(new Blob([c],{type:"image/svg+xml;charset=utf-8"})),p=()=>e&&e._orig&&(e.innerHTML=e._orig,e.disabled=!1,delete e._orig);m.crossOrigin="anonymous",m.onload=()=>{try{h.drawImage(m,0,0,n,r);const e=document.createElement("a");e.download=`${t}-chart-${(new Date).toISOString().slice(0,10)}.png`,e.href=d.toDataURL("image/png",1),e.style.display="none",document.body.appendChild(e),e.click(),document.body.removeChild(e),URL.revokeObjectURL(u),this.msg("Chart downloaded successfully!","success")}catch(t){this.msg("Failed to generate chart image","danger")}p()},m.onerror=()=>{URL.revokeObjectURL(u),this.msg("Failed to load chart for download","danger"),p()},setTimeout((()=>!m.complete&&(m.src="",URL.revokeObjectURL(u),this.msg("Chart download timed out","warning"),p())),1e4),m.src=u}catch(e){this.msg("Failed to download chart","danger");const a=document.querySelector(`[data-chart="${t}"]`);a&&a._orig&&(a.innerHTML=a._orig,a.disabled=!1,delete a._orig)}},msg(t,e="info"){if("function"==typeof showToast)return showToast(t,e);const a=document.createElement("div");a.style.cssText=`position:fixed;top:20px;right:20px;background:${"success"===e?"#4caf50":"danger"===e?"#f44336":"#2196f3"};color:white;padding:12px 20px;border-radius:6px;z-index:10000;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.2);animation:slideInRight 0.3s ease`,a.textContent=t,document.body.appendChild(a),setTimeout((()=>{a.style.animation="slideOutRight 0.3s ease",setTimeout((()=>document.body.contains(a)&&document.body.removeChild(a)),300)}),3e3)}};
+                    
+                    const UITesting={init(){this.list=document.getElementById("test-list-container"),this.info=document.getElementById("test-info-body"),this.logs=document.getElementById("test-logs-body"),this.search=document.querySelector(".test-search-input"),this.tBtn=document.getElementById("testFilterButton"),this.tDrop=document.getElementById("testFilterDropdown"),this.lBtn=document.getElementById("logsFilterButton"),this.lDrop=document.getElementById("logsFilterDropdown"),this.accBtn=document.getElementById("test-info-accordion-toggle"),this.accIcon=document.getElementById("test-info-accordion-icon"),this.badge=document.querySelector(".test-info-section .status-badge"),this.expBtn=document.getElementById("exportButton"),this.list&&(this.cards=Array.from(this.list.querySelectorAll(".test-card")),this.filter="all",this.searchTerm="",this.testId=null,this.states={},this.info&&(this.info.classList.add("expanding"),this.info.style.maxHeight="none"),this.accIcon&&(this.accIcon.style.transform="rotate(0deg)"),this.btnState(!1),this.bind(),this.update(),this.def())},bind(){this.search?.addEventListener("input",(()=>{this.searchTerm=this.search.value,this.update()})),this.tDrop?.addEventListener("click",(t=>this.dropClick(t,"data-test-filter",this.tBtn,".dropdown-badge","test-status",(()=>this.update())))),this.lDrop?.addEventListener("click",(t=>this.dropClick(t,"data-log-filter",this.lBtn,".dropdown-badge","log-status",(t=>this.filtLogs(t))))),this.list?.addEventListener("click",(t=>{const e=t.target.closest(".test-card");e&&"none"!==e.style.display&&this.sel(e.getAttribute("data-test-id"))})),this.logs?.addEventListener("click",(t=>{const e=t.target.closest(".test-log-toggle"),s=t.target.closest('button[data-modal="image"]:not(.disabled)');if(e){const t=e.closest(".test-log-item");t.classList.toggle("active"),this.logAcc(t)}s&&"undefined"!=typeof MediaModal&&MediaModal.openScreenshotModal&&MediaModal.openScreenshotModal({src:s.getAttribute("data-image-url"),title:s.getAttribute("data-log-id"),logId:s.getAttribute("data-log-id")})})),this.accBtn?.addEventListener("click",(()=>{const t=this.info.classList.contains("expanding");this.accToggle(!t),this.testId&&(this.states[this.testId]=!t)})),this.tBtn?.addEventListener("click",(t=>{t.stopPropagation(),this.toggle(this.tDrop,this.tBtn)})),this.lBtn?.addEventListener("click",(t=>{t.stopPropagation(),this.toggle(this.lDrop,this.lBtn)})),document.addEventListener("click",(()=>this.closeDrops())),document.addEventListener("navigateToUITesting",(t=>this.nav(t.detail.filter))),this.expBtn?.addEventListener("click",(()=>{!this.expBtn.disabled&&this.testId&&this.exp()}))},dropClick(t,e,s,i,o,n){const a=t.target.closest(".dropdown-option");if(!a)return;const l=a.closest(".dropdown-menu"),c=l.querySelector(".active");c&&(c.classList.remove("active"),c.setAttribute("aria-selected","false")),a.classList.add("active"),a.setAttribute("aria-selected","true");const r=a.getAttribute(e),d=s.querySelector(i);d&&(d.textContent=a.textContent.trim(),d.setAttribute(o,r)),"data-test-filter"===e&&(this.filter=r),l.classList.remove("show"),s.setAttribute("aria-expanded","false"),n(r)},toggle(t,e){if(!t||!e)return;const s=t.classList.contains("show");this.closeDrops(),s||(t.classList.add("show"),e.setAttribute("aria-expanded","true"))},closeDrops(){[this.tDrop,this.lDrop].forEach((t=>t?.classList.remove("show"))),[this.tBtn,this.lBtn].forEach((t=>t?.setAttribute("aria-expanded","false")))},nav(t){const e=document.querySelector(".nav-item.active"),s=document.querySelector(".content-section.active"),i=document.querySelector('.nav-item[data-section="ui-testing"]'),o=document.getElementById("ui-testing");e?.classList.remove("active"),s?.classList.remove("active"),i?.classList.add("active"),o?.classList.add("active");const n=this.tDrop?.querySelector(`[data-test-filter="${t}"]`);n&&n.click(),"function"==typeof showToast&&showToast(`Showing ${t} tests`,"success")},update(){let t=0;const e=this.searchTerm.trim().toLowerCase();this.cards.forEach((s=>{const i=s.getAttribute("test-status"),o=s.getAttribute("data-test-id")||"",n=s.querySelector(".test-title")?.textContent||"",a="all"===this.filter||i===this.filter,l=!e||o.toLowerCase().includes(e)||n.toLowerCase().includes(e);a&&l?(s.style.display="",t++):s.style.display="none"})),this.list.querySelector(".message-container")?.remove(),0===this.cards.length?this.msg("¯\\_(ツ)_/¯","No Tests to Show"):0===t&&this.msg("¯\\_(ツ)_/¯","No search results found for your query.")},sel(t){this.testId!==t&&(this.testId=t,this.lBtn&&(this.lBtn.disabled=!1),this.cards.forEach((e=>{const s=e.getAttribute("data-test-id")===t;e.classList.toggle("active",s),e.setAttribute("aria-selected",s)})),this.show(t))},show(t){const e='<svg width="50" height="50"><use href="#icon-loading"></use></svg>';this.info.innerHTML="",this.logs.innerHTML="",this.msg(e,"Loading Test Information...",this.info),this.msg(e,"Loading Test Logs...",this.logs),this.counts(null);const s=Date.now();requestAnimationFrame((()=>{if(this.testId!==t)return;const e="undefined"!=typeof testDataStore?testDataStore[t]:null;e?(this.renderInfo(e),this.renderLogs(e),this.btnState(!0),this.wait((()=>{const t=Date.now()-s,e=Math.max(0,200-t);e>0&&setTimeout((()=>{}),e)}))):this.def("Could not find test data.")}))},wait(t){const e=()=>{const s=!(this.info.querySelector(".message-container")&&this.info.querySelector(".message-container").textContent.includes("Loading Test Information"))&&""!==this.info.innerHTML.trim(),i=!(this.logs.querySelector(".message-container")&&this.logs.querySelector(".message-container").textContent.includes("Loading Test Logs"))&&""!==this.logs.innerHTML.trim();s&&i?t():requestAnimationFrame(e)};requestAnimationFrame(e)},def(t=null){this.info.innerHTML="",this.logs.innerHTML="";const e=t||"Click on a test to view information",s=t||"Click on a test to view logs";this.msg("☕︎",e,this.info),this.msg("☕︎",s,this.logs),this.badge&&(this.badge.textContent="INFO",this.badge.setAttribute("test-status","info")),this.counts(null),this.accToggle(!0),this.lBtn&&(this.lBtn.disabled=!0,this.lBtn.style.cssText="opacity:0.5;cursor:not-allowed"),this.btnState(!1)},renderInfo(t){const e=t.tags&&"object"==typeof t.tags?Object.entries(t.tags).map((([t,e])=>{const s=t.match(/TAG_(\d+)/)?.[1]||"1";return`<div class="badge tag-${Math.min(Math.max(parseInt(s),1),5)}">${e}</div>`})).join(""):"";this.info.innerHTML=`<div class="test-info-grid"><div class="test-info-grid-col"><div class="test-info-item"><div class="test-info-icon"><svg fill="currentColor"><use href="#icon-test-id"></use></svg></div><div class="test-info-content"><span class="test-info-label">Test ID</span><span class="test-info-value">${t.id}</span></div></div></div><div class="test-info-grid-col"><div class="test-info-item"><div class="test-info-icon"><svg fill="currentColor"><use href="#icon-duration"></use></svg></div><div class="test-info-content"><span class="test-info-label">Duration</span><span class="test-info-value">${t.duration}</span></div></div></div><div class="test-info-grid-col"><div class="test-info-item"><div class="test-info-icon"><svg fill="currentColor"><use href="#icon-tags"></use></svg></div><div class="test-info-content"><div class="test-info-tags-container"><span class="test-info-label-inline">Tags</span>${e}</div></div></div></div></div><div class="test-info-row"><div class="test-info-item"><div class="test-info-icon"><svg fill="currentColor"><use href="#icon-test-name"></use></svg></div><div class="test-info-content"><span class="test-info-label">Test Name</span><span class="test-info-value test-info-ellipsis">${t.name}</span></div></div></div><div class="test-info-row"><div class="test-info-item"><div class="test-info-icon"><svg fill="currentColor"><use href="#icon-description"></use></svg></div><div class="test-info-content"><span class="test-info-label">Description</span><span class="test-info-value test-info-ellipsis">${t.description}</span></div></div></div>`,this.badge&&(this.badge.textContent=t.status.toUpperCase(),this.badge.setAttribute("test-status",t.status)),this.accToggle(!1!==this.states[t.id])},accToggle(t){t!==this.info.classList.contains("expanding")&&(this.info.classList.toggle("expanding",t),this.accBtn&&this.accBtn.setAttribute("aria-expanded",t),this.accIcon&&(this.accIcon.style.transform=t?"rotate(0deg)":"rotate(-180deg)"),t?(this.info.style.maxHeight="0px",this.info.offsetHeight,this.info.style.maxHeight=`${this.info.scrollHeight}px`,setTimeout((()=>{this.info.classList.contains("expanding")&&(this.info.style.maxHeight="none")}),400)):(this.info.style.maxHeight=`${this.info.scrollHeight}px`,this.info.offsetHeight,this.info.style.maxHeight="0px"))},renderLogs(t){if(!t.logs||0===t.logs.length)return this.logs.innerHTML="",this.msg("¯\\_(ツ)_/¯","No logs to display",this.logs),this.counts(null),void(this.lBtn&&(this.lBtn.disabled=!0,this.lBtn.style.cssText="opacity:0.5;cursor:not-allowed"));this.lBtn&&(this.lBtn.disabled=!1,this.lBtn.style.cssText="opacity:1;cursor:pointer"),this.logs.innerHTML=t.logs.map((t=>`<div class="test-log-item" log-status="${t.status}" data-log-id="${t.id}"><div class="test-log-header"><div class="test-log-status"></div><div class="test-log-id">Log #${t.id}</div><div class="test-log-name">${t.name}</div><div class="test-log-time"><svg fill="currentColor"><use href="#icon-clock"></use></svg>${t.time}</div><div class="test-log-actions"><button class="test-log-btn ${t.screenshot?"":"disabled"}" data-modal="image" data-log-id="Log #${t.id}" data-image-url="${t.screenshot||""}" aria-label="View screenshot"><svg fill="currentColor"><use href="#icon-image"></use></svg></button><button class="test-log-btn test-log-toggle" aria-label="Toggle details"><svg fill="currentColor"><use href="#icon-chevron-down"></use></svg></button></div></div><div class="test-log-content"><div class="test-log-time-column">${t.time}</div><div class="test-log-message-column"><p>${t.message}</p></div></div></div>`)).join("");const e=this.lDrop?.querySelector(".active")?.getAttribute("data-log-filter")||"all";this.filtLogs(e)},logAcc(t){const e=t.querySelector(".test-log-content");if(t.classList.contains("active")){const t=e.cloneNode(!0),s=e.offsetWidth||e.parentElement.offsetWidth;t.style.cssText=`position:absolute;visibility:hidden;max-height:none;padding:18px;overflow:visible;display:flex;align-items:flex-start;box-sizing:border-box;width:${s}px`,e.parentElement.appendChild(t),t.offsetHeight;const i=t.scrollHeight;t.remove();const o=i>200,n=o?200:i;e.style.overflowY=o?"auto":"hidden",requestAnimationFrame((()=>{e.style.maxHeight=n+"px"}))}else e.style.maxHeight="0px",e.style.overflowY="hidden"},filtLogs(t){const e=this.logs.querySelectorAll(".test-log-item");let s=0;e.forEach((e=>{const i=e.getAttribute("log-status"),o="all"===t||i===t;e.style.display=o?"":"none",o&&s++})),this.logs.querySelector(".message-container")?.remove(),0===s&&e.length>0&&this.msg("¯\\_(ツ)_/¯",`No logs to show for filter: ${t}`,this.logs),this.counts(e)},counts(t){const e={total:0,pass:0,fail:0,skip:0,info:0};t&&t.forEach((t=>{const s=t.getAttribute("log-status");e.hasOwnProperty(s)&&e[s]++,e.total++})),Object.keys(e).forEach((t=>{const s=document.getElementById(`${t}-logs-count`);s&&(s.textContent=e[t])}));const s=document.getElementById("fail-logs-count");s&&(e.fail>0?s.classList.add("badge-pulse-active"):s.classList.remove("badge-pulse-active"))},btnState(t){this.expBtn&&(this.expBtn.disabled=!t,this.expBtn.style.cssText=t?"opacity:1;cursor:pointer":"opacity:0.5;cursor:not-allowed")},exp(){if(!this.testId)return void("function"==typeof showToast&&showToast("No test selected for export","warning"));const t="undefined"!=typeof testDataStore?testDataStore[this.testId]:null;if(!t)return void("function"==typeof showToast&&showToast("Test data not found","error"));const e=(new Date).toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",hour12:!0}).replace(/,/g,"").replace(/\\./g,"").toUpperCase(),s=`${t.id}_${t.status}_${e}.csv`;let i="TEST INFORMATION\\n================\\n";i+=`Test ID,${t.id}\\nTest Name,"${t.name}"\\nStatus,${t.status}\\nDuration,${t.duration}\\nDate,${(t=>{try{return new Date(t).toLocaleDateString("en-GB",{day:"2-digit",month:"long",year:"numeric"})}catch(e){return t}})(t.date)}\\nTime,${t.time}\\nDescription,"${t.description}"\\n`,t.tags&&(i+=`Tags,"${Array.isArray(t.tags)?t.tags.join(", "):Object.values(t.tags).join(", ")}"\\n`),i+="\\nTEST LOGS\\n=========\\nLog ID,Status,Name,Time,Message\\n",t.logs&&t.logs.forEach((t=>{const e=t.message.replace(/"/g,'""'),s=t.name.replace(/"/g,'""');i+=`${t.id},${t.status},"${s}",${t.time},"${e}"\\n`}));const o=new Blob([i],{type:"text/csv;charset=utf-8;"}),n=document.createElement("a");if(void 0!==n.download){const t=URL.createObjectURL(o);n.href=t,n.download=s,n.style.visibility="hidden",document.body.appendChild(n),n.click(),document.body.removeChild(n),URL.revokeObjectURL(t),"function"==typeof showToast&&showToast(`Test data exported as ${s}`,"success")}else"function"==typeof showToast&&showToast("Export not supported in this browser","error")},msg(t,e,s=null){const i=s||this.list;if("function"==typeof createMessageContainer)i.appendChild(createMessageContainer(t,e));else{const s=document.createElement("div");s.className="message-container d-flex",s.innerHTML=`<div class="message-box"><div class="kaomoji">${t}</div><p>${e}</p></div>`,i.appendChild(s)}}};
+                    
+                    const MediaModal={modal:null,title:null,body:null,img:null,wrap:null,canvas:null,tools:null,btn:null,ctx:null,load:null,cont:null,err:null,prog:null,zoom:1,MIN:.5,MAX:5,STEP:.25,ann:!1,pan:!1,draw:!1,panX:0,panY:0,transX:0,transY:0,startX:0,startY:0,logId:"",shape:null,color:"#FF0000",shapes:[],undo:[],snap:null,blob:null,init(){this.modal=document.getElementById("mediaModal"),this.title=this.modal.querySelector(".media-modal-title h5"),this.body=this.modal.querySelector(".media-modal-body"),this.img=document.getElementById("modalImage"),this.wrap=document.getElementById("mediaZoomWrapper"),this.canvas=document.getElementById("annotationCanvas"),this.tools=document.getElementById("annotationTools"),this.btn=document.getElementById("annotateBtn"),this.load=document.getElementById("loadingContainer"),this.cont=document.getElementById("imageContainer"),this.err=document.getElementById("mediaErrorMessage"),this.ctx=this.canvas.getContext("2d",{willReadFrequently:!0}),this.prog=this.load.querySelector(".loading-text"),this.bind()},bind(){this.modal.querySelector(".media-modal-close").addEventListener("click",(()=>this.close())),this.modal.addEventListener("click",(t=>{t.target===this.modal&&this.close()})),document.getElementById("zoomIn").addEventListener("click",(()=>this.zoomBy(this.STEP))),document.getElementById("zoomOut").addEventListener("click",(()=>this.zoomBy(-this.STEP))),document.getElementById("reset").addEventListener("click",(()=>this.resetAll())),document.getElementById("downloadBtn").addEventListener("click",(()=>this.download())),this.btn.addEventListener("click",(t=>{t.stopPropagation(),this.ann&&"none"===this.tools.style.display?this.tools.style.display="flex":this.toggleAnn()})),this.tools.addEventListener("click",(t=>{t.stopPropagation();const s=t.target.closest(".color-option");s&&(this.tools.querySelector(".color-option.active")?.classList.remove("active"),this.tools.querySelector(".color-option.active")?.setAttribute("aria-pressed","false"),s.classList.add("active"),s.setAttribute("aria-pressed","true"),this.color=s.getAttribute("data-color"));const e=t.target.closest(".shape-btn[data-shape]");e&&(this.tools.querySelector(".shape-btn.active")?.classList.remove("active"),this.tools.querySelector(".shape-btn.active")?.setAttribute("aria-pressed","false"),e.classList.add("active"),e.setAttribute("aria-pressed","true"),this.shape=e.getAttribute("data-shape"),this.canvas.style.pointerEvents="auto",this.cursor(),this.tools.style.display="none"),t.target.closest("#undoBtn")&&(this.undoShape(),this.ann&&(this.tools.style.display="flex")),t.target.closest("#redoBtn")&&(this.redoShape(),this.ann&&(this.tools.style.display="flex")),t.target.closest("#clearAnnotations")&&(this.shapes=[],this.undo=[],this.redraw(),this.ann&&(this.tools.style.display="flex"))})),document.addEventListener("click",(t=>{!this.ann||t.target.closest("#annotateBtn")||t.target.closest("#annotationTools")||"flex"!==this.tools.style.display||(this.tools.style.display="none")})),document.addEventListener("keydown",(t=>this.keys(t))),this.setupPan(),this.setupCanvas(),this.setupZoom(),window.ResizeObserver&&new ResizeObserver((()=>{"block"===this.modal.style.display&&this.sync()})).observe(this.img)},openScreenshotModal({src:t,title:s="Screenshot",logId:e=""}){if(!t)return void("function"==typeof showToast&&showToast("No image available for this log entry.","warning"));this.modal.style.display="block",this.title.textContent=s,this.logId=e,this.resetAll(),this.disableBtns(),this.loading(!0,"Loading... 0%");const i=new XMLHttpRequest;i.open("GET",t,!0),i.responseType="blob",i.onprogress=t=>{if(t.lengthComputable){const s=Math.round(t.loaded/t.total*100);this.prog.textContent=`Loading... ${s}%`}},i.onload=()=>{200===i.status?(this.blob=URL.createObjectURL(i.response),this.img.onload=()=>{this.loading(!1),this.cont.style.display="flex",this.sync(),this.enableBtns(),URL.revokeObjectURL(this.blob),this.blob=null},this.img.onerror=()=>this.error("Could not render the downloaded image."),this.img.src=this.blob):this.error(`Failed to load image (HTTP ${i.status})`)},i.onerror=()=>this.error("Failed to load image due to a network error."),i.send()},loading(t,s="Loading media..."){this.cont.style.display="none",this.err.style.display="none",this.load.style.display=t?"flex":"none",this.prog.textContent=s},error(t){if(this.loading(!1),this.err.innerHTML="","function"==typeof createMessageContainer)this.err.appendChild(createMessageContainer("⚠️",t));else{const s=document.createElement("div");s.className="message-container d-flex",s.innerHTML=`<div class="message-box"><div class="kaomoji">⚠️</div><p>${t}</p></div>`,this.err.appendChild(s)}this.err.style.display="flex"},close(){this.modal.style.display="none",this.disableAnn(),this.disableBtns()},resetAll(){this.zoom=1,this.transX=0,this.transY=0,this.transform(),this.shapes=[],this.undo=[],this.redraw(),this.cursor()},zoomBy(t){this.zoom=Math.max(this.MIN,Math.min(this.MAX,this.zoom+t)),this.transform(),this.cursor()},transform(){this.wrap.style.transform=`translate(${this.transX}px,${this.transY}px) scale(${this.zoom})`},toggleAnn(){this.ann=!this.ann,this.btn.classList.toggle("active",this.ann),this.btn.setAttribute("aria-pressed",this.ann),this.ann?this.tools.style.display="flex":(this.tools.style.display="none",this.tools.querySelectorAll(".shape-btn.active").forEach((t=>{t.classList.remove("active"),t.setAttribute("aria-pressed","false")})),this.shape=null),this.canvas.style.pointerEvents=this.ann&&this.shape?"auto":"none",this.cursor()},disableAnn(){this.ann&&this.toggleAnn()},disableBtns(){this.modal.querySelectorAll(".media-btn").forEach((t=>{t.disabled=!0,t.classList.add("disabled")}))},enableBtns(){this.modal.querySelectorAll(".media-btn").forEach((t=>{t.disabled=!1,t.classList.remove("disabled")}))},async download(){const t=document.getElementById("downloadBtn"),s=t.querySelector(".download-btn-icon"),e=t.querySelector(".download-btn-loading");s.style.display="none",e.style.display="inline-block";try{const t=document.createElement("canvas"),s=t.getContext("2d");t.width=this.img.naturalWidth,t.height=this.img.naturalHeight,s.drawImage(this.img,0,0),s.drawImage(this.canvas,0,0);const e=document.createElement("a"),i=document.querySelector(".test-card.active")?.getAttribute("data-test-id")||"Test",o=this.logId.replace(/[^a-zA-Z0-9_-]/g,"")||"Log";"function"==typeof showToast&&showToast("Screenshot download started!","success"),e.download=`${i}_${o}_Screenshot.png`,e.href=t.toDataURL("image/png"),e.click()}catch(t){"function"==typeof showToast&&showToast("Failed to prepare image for download.","danger")}finally{s.style.display="inline-block",e.style.display="none"}},setupPan(){this.cont.addEventListener("mousedown",(t=>{0!==t.button||this.zoom<=1||this.ann&&this.shape||(this.pan=!0,this.panX=t.clientX,this.panY=t.clientY,this.cont.style.cursor="grabbing",this.canvas.style.cursor="grabbing")})),document.addEventListener("mousemove",(t=>{this.pan&&(this.transX+=t.clientX-this.panX,this.transY+=t.clientY-this.panY,this.panX=t.clientX,this.panY=t.clientY,this.transform())})),document.addEventListener("mouseup",(()=>{this.pan&&(this.pan=!1,this.zoom>1?(this.cont.style.cursor="grab",this.ann&&!this.shape&&(this.canvas.style.cursor="grab")):this.cursor())})),this.cont.addEventListener("mousemove",(()=>{this.pan||(this.ann&&this.shape?this.cont.style.cursor="crosshair":this.zoom>1?this.cont.style.cursor="grab":this.cont.style.cursor="default")}))},setupCanvas(){const t=t=>({x:(t.clientX-this.canvas.getBoundingClientRect().left)*(this.canvas.width/this.canvas.getBoundingClientRect().width),y:(t.clientY-this.canvas.getBoundingClientRect().top)*(this.canvas.height/this.canvas.getBoundingClientRect().height)});this.canvas.addEventListener("mousedown",(s=>{if(0!==s.button||!this.ann||!this.shape)return void(!this.shape&&this.ann);const{x:e,y:i}=t(s);this.startX=e,this.startY=i,this.draw=!0,this.undo=[],this.snap=this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height)})),this.canvas.addEventListener("mousemove",(s=>{const{x:e,y:i}=t(s);if(this.draw)return this.snap&&this.ctx.putImageData(this.snap,0,0),void this.drawShape(this.startX,this.startY,e,i,!1);this.dynCursor(e,i)})),this.canvas.addEventListener("mouseup",(s=>{if(!this.draw)return;const{x:e,y:i}=t(s);this.draw=!1,this.drawShape(this.startX,this.startY,e,i,!0),this.complete()})),this.canvas.addEventListener("mouseleave",(()=>this.cursor()))},setupZoom(){this.cont.addEventListener("wheel",(t=>{if("block"!==this.modal.style.display)return;t.preventDefault();const s=this.cont.getBoundingClientRect(),e=t.clientX-s.left,i=t.clientY-s.top,o=t.deltaY>0?-this.STEP:this.STEP;this.zoomAt(e,i,o)}),{passive:!1});let t=0,s=1,e=[];this.cont.addEventListener("touchstart",(i=>{2===i.touches.length&&(i.preventDefault(),e=Array.from(i.touches),t=this.touchDist(e[0],e[1]),s=this.zoom)}),{passive:!1}),this.cont.addEventListener("touchmove",(i=>{if(2===i.touches.length&&2===e.length){i.preventDefault();const e=Array.from(i.touches),o=this.touchDist(e[0],e[1]);if(t>0){const i=o/t,a=Math.max(this.MIN,Math.min(this.MAX,s*i)),n=this.cont.getBoundingClientRect(),h=(e[0].clientX+e[1].clientX)/2-n.left,r=(e[0].clientY+e[1].clientY)/2-n.top;this.setZoomAt(h,r,a)}}}),{passive:!1}),this.cont.addEventListener("touchend",(s=>{s.touches.length<2&&(e=[],t=0)})),this.cont.addEventListener("wheel",(t=>{if("block"===this.modal.style.display&&Math.abs(t.deltaY)<50&&t.ctrlKey){t.preventDefault();const s=this.cont.getBoundingClientRect(),e=t.clientX-s.left,i=t.clientY-s.top,o=t.deltaY>0?-.1:.1;this.zoomAt(e,i,o)}}),{passive:!1})},touchDist(t,s){const e=t.clientX-s.clientX,i=t.clientY-s.clientY;return Math.sqrt(e*e+i*i)},zoomAt(t,s,e){const i=this.zoom,o=Math.max(this.MIN,Math.min(this.MAX,i+e));o!==i&&this.setZoomAt(t,s,o)},setZoomAt(t,s,e){const i=this.cont.getBoundingClientRect(),o=t-i.width/2,a=s-i.height/2,n=e/this.zoom;this.transX=(this.transX-o)*n+o,this.transY=(this.transY-a)*n+a,this.zoom=e,this.transform(),this.cursor()},keys(t){if("block"!==this.modal.style.display||/TEXTAREA|INPUT/.test(t.target.tagName))return;const s={Escape:()=>this.close(),"+":()=>this.zoomBy(this.STEP),"=":()=>this.zoomBy(this.STEP),"-":()=>this.zoomBy(-this.STEP)};t.shiftKey&&Object.assign(s,{A:()=>this.toggleAnn(),D:()=>this.download(),R:()=>this.resetAll()}),(t.ctrlKey||t.metaKey)&&this.ann&&Object.assign(s,{z:()=>this.undoShape(),y:()=>this.redoShape()}),s[t.key]&&(t.preventDefault(),s[t.key]())},sync(){this.canvas.width=this.img.naturalWidth,this.canvas.height=this.img.naturalHeight,this.redraw()},drawShape(t,s,e,i,o){const a={type:this.shape,color:this.color,lineWidth:3};switch(this.ctx.strokeStyle=a.color,this.ctx.lineWidth=a.lineWidth,this.ctx.fillStyle=a.color,this.shape){case"rectangle":Object.assign(a,{x:Math.min(t,e),y:Math.min(s,i),width:Math.abs(e-t),height:Math.abs(i-s)}),this.ctx.strokeRect(a.x,a.y,a.width,a.height);break;case"circle":Object.assign(a,{cx:t,cy:s,radius:Math.sqrt(Math.pow(e-t,2)+Math.pow(i-s,2))}),this.ctx.beginPath(),this.ctx.arc(a.cx,a.cy,a.radius,0,2*Math.PI),this.ctx.stroke();break;case"line":Object.assign(a,{fromX:t,fromY:s,toX:e,toY:i}),this.ctx.beginPath(),this.ctx.moveTo(t,s),this.ctx.lineTo(e,i),this.ctx.stroke();break;case"arrow":Object.assign(a,{fromX:t,fromY:s,toX:e,toY:i}),this.arrow(this.ctx,t,s,e,i,a.color)}o&&this.shapes.push(a)},arrow(t,s,e,i,o,a){const n=Math.atan2(o-e,i-s);t.beginPath(),t.moveTo(s,e),t.lineTo(i,o),t.strokeStyle=a,t.stroke(),t.beginPath(),t.moveTo(i,o),t.lineTo(i-15*Math.cos(n-Math.PI/6),o-15*Math.sin(n-Math.PI/6)),t.moveTo(i,o),t.lineTo(i-15*Math.cos(n+Math.PI/6),o-15*Math.sin(n+Math.PI/6)),t.stroke()},redraw(){this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height),this.shapes.forEach((t=>{switch(this.ctx.strokeStyle=t.color,this.ctx.lineWidth=t.lineWidth,this.ctx.fillStyle=t.color,t.type){case"rectangle":this.ctx.strokeRect(t.x,t.y,t.width,t.height);break;case"circle":this.ctx.beginPath(),this.ctx.arc(t.cx,t.cy,t.radius,0,2*Math.PI),this.ctx.stroke();break;case"line":this.ctx.beginPath(),this.ctx.moveTo(t.fromX,t.fromY),this.ctx.lineTo(t.toX,t.toY),this.ctx.stroke();break;case"arrow":this.arrow(this.ctx,t.fromX,t.fromY,t.toX,t.toY,t.color)}}))},complete(){setTimeout((()=>{this.tools.querySelectorAll(".shape-btn.active").forEach((t=>{t.classList.remove("active"),t.setAttribute("aria-pressed","false")})),this.shape=null,this.canvas.style.pointerEvents="none",this.cursor(),this.ann&&(this.tools.style.display="flex")}),100)},cursor(){this.ann?this.shape?(this.cont.style.cursor="crosshair",this.canvas.style.cursor="crosshair"):(this.cont.style.cursor=this.zoom>1?"grab":"default",this.canvas.style.cursor=this.zoom>1?"grab":"default"):(this.cont.style.cursor=this.zoom>1?"grab":"default",this.canvas.style.cursor="default")},dynCursor(t,s){if(!this.ann)return void(this.canvas.style.cursor=this.zoom>1?"grab":"default");if(this.shape)return void(this.canvas.style.cursor="crosshair");const e=this.shapeAt(t,s);this.canvas.style.cursor=e?"pointer":this.zoom>1?"grab":"default"},shapeAt(t,s){for(let e=this.shapes.length-1;e>=0;e--){const i=this.shapes[e];if(this.inShape(t,s,i))return i}return null},inShape(t,s,e){switch(e.type){case"rectangle":return t>=e.x-5&&t<=e.x+e.width+5&&s>=e.y-5&&s<=e.y+e.height+5;case"circle":return Math.sqrt(Math.pow(t-e.cx,2)+Math.pow(s-e.cy,2))<=e.radius+5;case"line":case"arrow":return this.lineDist(t,s,e.fromX,e.fromY,e.toX,e.toY)<=5;default:return!1}},lineDist(t,s,e,i,o,a){const n=t-e,h=s-i,r=o-e,l=a-i,c=n*r+h*l,d=r*r+l*l;if(0===d)return Math.sqrt(n*n+h*h);let u,m,p=c/d;p<0?(u=e,m=i):p>1?(u=o,m=a):(u=e+p*r,m=i+p*l);const g=t-u,y=s-m;return Math.sqrt(g*g+y*y)},undoShape(){this.shapes.length>0&&(this.undo.push(this.shapes.pop()),this.redraw())},redoShape(){this.undo.length>0&&(this.shapes.push(this.undo.pop()),this.redraw())}};
+                    
+                    const MetaCardAccent={init(){this.cards=document.querySelectorAll(".dashboard-meta-cards .card"),this.cards.length&&(this.apply(),document.addEventListener("themeChanged",(()=>this.apply())))},apply(){const t="dark"===document.body.getAttribute("data-theme");this.cards.forEach((a=>{const e=Math.floor(360*Math.random()),d=(e+(24+Math.floor(24*Math.random())))%360,r=t?75:80,n=t?60:55,s=t?50:45,c=t?.95:1;a.style.setProperty("--meta-accent-gradient",`linear-gradient(180deg,hsla(${e},${r}%,${n}%,${c}) 0%,hsla(${d},${r}%,${s}%,${c}) 100%)`)}))}};
+
+                    const App={init(){ThemeManager.init(),Navigation.init(),Dashboard.init(),UITesting.init(),MediaModal.init(),MetaCardAccent.init(),document.querySelector('button[data-tooltip="Reload"]')?.addEventListener("click",(()=>{showToast("Refreshing data...","info"),setTimeout((()=>window.location.reload()),500)}));const t=document.getElementById("r-logo");t?.animate&&t.animate([{opacity:0,transform:"translateY(16px)"},{opacity:1,transform:"translateY(0)"}],{duration:900,fill:"forwards",easing:"cubic-bezier(.6,0,.4,1)"})}};
+
+                    App.init();
+                })();
+        });
+    </script>
+
+</body>
+
+</html>

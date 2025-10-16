@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-10-16T15:58:14 IST" name="Default suite" finished-at="2025-10-16T15:58:16 IST" duration-ms="1141">
+    <groups>
+    </groups>
+    <test started-at="2025-10-16T15:58:14 IST" name="Default test" finished-at="2025-10-16T15:58:16 IST" duration-ms="1141">
+      <class name="com.visionreport.tests.FullSuiteTest">
+        <test-method is-config="true" signature="setUpSuite()[pri:0, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:14 IST" name="setUpSuite" finished-at="2025-10-16T15:58:14 IST" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpSuite -->
+        <test-method signature="standardPassFailSkipTest()[pri:1, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:14 IST" name="standardPassFailSkipTest" description="Verifies basic PASS, INFO, SKIP, FAIL logging and fluent API." finished-at="2025-10-16T15:58:14 IST" duration-ms="28" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- standardPassFailSkipTest -->
+        <test-method signature="exceptionLoggingTest()[pri:2, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:14 IST" name="exceptionLoggingTest" description="Exception logging with messages and null message." finished-at="2025-10-16T15:58:15 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- exceptionLoggingTest -->
+        <test-method signature="skippedLogsTest()[pri:3, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="skippedLogsTest" description="Skipped logs are correctly prioritized." finished-at="2025-10-16T15:58:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- skippedLogsTest -->
+        <test-method signature="mediaProviderEdgeCases()[pri:10, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="mediaProviderEdgeCases" description="MediaProvider types and edge cases" finished-at="2025-10-16T15:58:15 IST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mediaProviderEdgeCases -->
+        <test-method signature="exceptionWithMediaTest()[pri:11, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="exceptionWithMediaTest" description="Exception with media" finished-at="2025-10-16T15:58:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- exceptionWithMediaTest -->
+        <test-method signature="duplicateAuthorsCategoriesTest()[pri:21, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="duplicateAuthorsCategoriesTest" description="Duplicate authors/categories" finished-at="2025-10-16T15:58:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- duplicateAuthorsCategoriesTest -->
+        <test-method signature="extremeUnicodeTest()[pri:22, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="extremeUnicodeTest" description="Extreme lengths and Unicode/special chars" finished-at="2025-10-16T15:58:15 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- extremeUnicodeTest -->
+        <test-method signature="statusPassInfoTest()[pri:30, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="statusPassInfoTest" description="PASS + INFO only → final status PASS" finished-at="2025-10-16T15:58:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- statusPassInfoTest -->
+        <test-method signature="statusSkipOverridesPassTest()[pri:31, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="statusSkipOverridesPassTest" description="SKIP overrides PASS" finished-at="2025-10-16T15:58:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- statusSkipOverridesPassTest -->
+        <test-method signature="statusFailOverridesAllTest()[pri:32, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="statusFailOverridesAllTest" description="FAIL overrides everything" finished-at="2025-10-16T15:58:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- statusFailOverridesAllTest -->
+        <test-method signature="flushEmptyReportTest()[pri:40, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="flushEmptyReportTest" description="Flushing empty report" finished-at="2025-10-16T15:58:15 IST" duration-ms="223" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flushEmptyReportTest -->
+        <test-method signature="flushMultipleTimesTest()[pri:41, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:15 IST" name="flushMultipleTimesTest" description="Flush multiple times" finished-at="2025-10-16T15:58:16 IST" duration-ms="834" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flushMultipleTimesTest -->
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:com.visionreport.tests.FullSuiteTest@4567f35d]" started-at="2025-10-16T15:58:16 IST" name="tearDownSuite" finished-at="2025-10-16T15:58:16 IST" duration-ms="206" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownSuite -->
+      </class> <!-- com.visionreport.tests.FullSuiteTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
