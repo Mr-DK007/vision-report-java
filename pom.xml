@@ -6,12 +6,12 @@
 
     <groupId>io.github.mr-dk007</groupId>
     <artifactId>vision-report</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <name>Vision Report</name>
     <description>A simple and powerful test reporting library for creating beautiful, standalone HTML reports.</description>
-    <url>https://github.com/mr-dk007/vision-report-java</url>
+    <url>https://mr-dk007.github.io/vision-report-java/demo/</url>
 
     <licenses>
         <license>
